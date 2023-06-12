@@ -17,20 +17,43 @@ public class Course {
         this.lec = new Lecturer();
     }
 
-    public void setLec(Lecturer lec) {
-        this.lec = lec;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public String toString(){
-        return "Course Name: " + name + "\nCourse code: " + code + "\nCourse credit: " + credit + "\nCourse Capacity: " + space + "\nCourse Lecturer: " + lec.getName();
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCredit() {
+        return credit;
+    }
+
+    public void setCredit(int credit) {
+        this.credit = credit;
+    }
+
+    public int getSpace() {
+        return space;
+    }
+
+    public void setSpace(int space) {
+        this.space = space;
     }
 
     public String getCode() {
         return code;
     }
     
-    public String getLec() {
-        return lec.getName();
+    public void setCode(String code) {
+        this.code = code;
+    }
+    
+    public Lecturer getLec() {
+        return lec;
+    }
+
+    public void setLec(Lecturer lec) {
+        this.lec = lec;
     }
 }
