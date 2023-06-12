@@ -58,6 +58,5 @@ public class Course {
     }
 
     public void setset(){
-        
     }
 }
