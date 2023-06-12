@@ -2,7 +2,7 @@ import java.util.*;
 
 public class StudentView {
     Scanner sc = new Scanner(System.in);
-     int choice;
+    int choice;
 
     public Student createStudent(){
         System.out.println("\n\nNew Student");
