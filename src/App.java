@@ -20,15 +20,6 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
-    public static void showaamenu(Acad a){
-        System.out.println("\n\nWelcome to the course registration system, ");
-        System.out.println("\nKindly select the activity");
-        System.out.println("[1] Create Course");
-        System.out.println("[2] Remove Course");
-        System.out.println("[3] View Course");
-        System.out.println("[4] Exit");
-        System.out.print("\nNumber: ");
-    }
     public static void showlecmenu(Lecturer l){
         System.out.println("\n\nWelcome to the course registration system, " + l.getName());
         System.out.println("\nKindly select the activity");
@@ -45,11 +36,10 @@ public class App {
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList);
-        Acad a = new Acad("Admin A", "S12A2","pass1");
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         Student s = new Student("Loy", "A21ES0223");
         Scanner z = new Scanner(System.in);
-        int w,y,ys,yss;
+        int w,y,yss;
         do{
         showmenu();
         w = z.nextInt();
