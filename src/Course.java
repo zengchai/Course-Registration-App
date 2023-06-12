@@ -57,7 +57,5 @@ public class Course {
         this.lec = lec;
     }
 
-    public void stupid(){
 
-    }
 }
