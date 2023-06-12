@@ -57,7 +57,4 @@ public class Course {
         this.lec = lec;
     }
 
-    public void setset(){
-        asdasd
-    }
 }
