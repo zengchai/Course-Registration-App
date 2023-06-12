@@ -60,4 +60,12 @@ public class Course {
     public void stupid(){
 
     }
+<<<<<<< HEAD
+=======
+
+    public void asdad(){
+
+    }
+
+>>>>>>> 5bd11b2ad9cc32e5b9cae1192877961dbf98af3b
 }
