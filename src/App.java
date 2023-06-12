@@ -11,19 +11,7 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
-<<<<<<< HEAD
-=======
-    public static void showstumenu(Student s){
-        System.out.println("\n\nWelcome to the course registration system, " + s.getName());
-        System.out.println("\nKindly select the activity");
-        System.out.println("[1] Register Course");
-        System.out.println("[2] Drop Course");
-        System.out.println("[3] View Course");
-        System.out.println("[4] Exit");
-        System.out.print("\nNumber: ");
-    }
->>>>>>> main
-    
+
     public static void showlecmenu(Lecturer l){
         System.out.println("\n\nWelcome to the course registration system, " + l.getName());
         System.out.println("\nKindly select the activity");
