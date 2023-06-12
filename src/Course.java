@@ -57,6 +57,9 @@ public class Course {
         this.lec = lec;
     }
 
+<<<<<<< HEAD
     public void setset(){
     }
+=======
+>>>>>>> 539ae4dc17d9a02074bfab73abf4a2a0b0e79ecb
 }
