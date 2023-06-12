@@ -56,4 +56,8 @@ public class Course {
     public void setLec(Lecturer lec) {
         this.lec = lec;
     }
+
+    public void setset(){
+        
+    }
 }
