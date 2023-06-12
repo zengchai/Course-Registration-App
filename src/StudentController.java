@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 
 public class StudentController {
@@ -6,7 +6,6 @@ public class StudentController {
     private ArrayList<Student> StudentList ;
     private ArrayList<Course> CourseList ;
     private StudentView studentview;
-    private AController acontroller;
     private int index;
 
     public StudentController(ArrayList<Student> studentList, ArrayList<Course> courseList) {
