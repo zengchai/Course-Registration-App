@@ -37,6 +37,7 @@ public class App {
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList);
+        StudentController stuController = new StudentController(stuList,courseList);
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         Student s = new Student("Loy", "A21ES0223");
         Scanner z = new Scanner(System.in);
@@ -45,22 +46,7 @@ public class App {
         showmenu();
         w = z.nextInt();
         if (w==1){
-            do{
-            showstumenu(s);
-            y = z.nextInt();
-            if (y==1){
-                System.out.print("\nKindly enter the course code that you want to register:");
-                z.nextLine();
-                String k = z.nextLine();
-            }
-            if (y==2){
-                System.out.print("The last added course has been deleted");
-                s.removeCours();
-            }
-            if (y==3){
-                System.out.println("\n\nRegistered Course List");
-                s.viewCourse();
-            }}while(y!=4);
+           stuController.StuControllerMenu();
         }
         if (w==2){
             aController.displayMenu();
