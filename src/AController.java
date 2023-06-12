@@ -59,9 +59,4 @@ public class AController {
             }
         }
     }
-
-    public void setLecture(){
-        
-    }
-
 }

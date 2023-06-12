@@ -20,6 +20,7 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
+    
     public static void showlecmenu(Lecturer l){
         System.out.println("\n\nWelcome to the course registration system, " + l.getName());
         System.out.println("\nKindly select the activity");
