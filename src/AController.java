@@ -10,4 +10,7 @@ public class AController {
         courseList.add(c);
     }
 
+    public void viewCourse(){
+        acadView.displayCourseList(courseList);
+    }
 }
