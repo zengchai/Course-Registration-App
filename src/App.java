@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -20,7 +21,7 @@ public class App {
         System.out.print("\nNumber: ");
     }
     public static void showaamenu(Acad a){
-        System.out.println("\n\nWelcome to the course registration system, " + a.getName());
+        System.out.println("\n\nWelcome to the course registration system, ");
         System.out.println("\nKindly select the activity");
         System.out.println("[1] Create Course");
         System.out.println("[2] Remove Course");
@@ -37,7 +38,14 @@ public class App {
         System.out.print("\nNumber: ");
     }
     public static void main(String[] args) throws Exception {
-        Acad a = new Acad("Admin A", "S12A2");
+        ArrayList <Course> courseList = new ArrayList<>();
+        ArrayList <Acad> acadList = new ArrayList<>();
+        ArrayList <Lecturer> lecList = new ArrayList<>();
+        ArrayList <Student> stuList = new ArrayList<>();
+        acadList.add(new Acad("Admin A", "S23A1","pass1"));
+        acadList.add(new Acad("Admin B", "S23A2","pass2"));
+        AController aController = new AController(acadList, courseList);
+        Acad a = new Acad("Admin A", "S12A2","pass1");
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         Student s = new Student("Loy", "A21ES0223");
         Scanner z = new Scanner(System.in);
@@ -50,15 +58,9 @@ public class App {
             showstumenu(s);
             y = z.nextInt();
             if (y==1){
-                a.viewCourse();
                 System.out.print("\nKindly enter the course code that you want to register:");
                 z.nextLine();
                 String k = z.nextLine();
-                if(a.searchCourse(k)!=null){
-                s.setCours(a.searchCourse(k));}
-                else{
-                    System.out.println("Sorry, we can't find any course for that code.");
-                }
             }
             if (y==2){
                 System.out.print("The last added course has been deleted");
@@ -70,34 +72,18 @@ public class App {
             }}while(y!=4);
         }
         if (w==2){
-            do{
-            showaamenu(a);
-            ys = z.nextInt();
-            if(ys == 1){
-                a.creatCourse();
-            }
-            if(ys == 2){
-                System.out.print("The last added course has been deleted");
-                a.removeCourse();
-            }
-            if(ys == 3){
-                a.viewCourse();
-            }}while(ys!=4);
+            aController.displayMenu();
         }
         if(w==3){
             do{
             showlecmenu(l);
             yss = z.nextInt();
             if(yss == 1){
-                a.viewCourse();
                 System.out.print("\nEnter the course code that you want to select:");
                 z.nextLine();
                 String d = z.nextLine();
-                l.setCours(a.searchCourse(d));
-                a.setlec(l,d);
             }
             if(yss == 2){
-                a.viewLec(l);
             }}while(yss!=3);
             
         }
