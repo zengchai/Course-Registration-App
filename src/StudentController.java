@@ -44,10 +44,6 @@ public class StudentController {
         };
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
     public void RegisterCourse(StudentView studentView){
         String temp=studentView.showRegisterCourse();
         for (int i =0;i<CourseList.size();i++){
