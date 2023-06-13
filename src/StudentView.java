@@ -15,15 +15,16 @@ public class StudentView {
         return stu;   
     }
 
-    public String confirmStudent(){
+    public Student confirmStudent(){
         System.out.println("\nPlease enter your name");
         String name = sc.nextLine();
-        return name;
+        System.out.println("\nPlease enter your matric id");
+        String id = sc.nextLine();
+        return new Student(name, id);
     }
 
-    public int showstumenu(){
-        do{
-        System.out.println("\n\nWelcome to the course registration system! " );
+    public int showstumenu(Student student){
+        System.out.println("\n\nWelcome to the course registration system! "+student.getName());
         System.out.println("\nKindly select the activity");
         System.out.println("[1] Register Course");
         System.out.println("[2] Drop Course");
@@ -32,7 +33,6 @@ public class StudentView {
         System.out.print("\nChoice: ");
         choice = sc.nextInt();
         return choice;
-        }while(choice<1 || choice>4);
     }
 
     public String showRegisterCourse(){
@@ -53,6 +53,10 @@ public class StudentView {
         System.out.println(n + "is not a valid course name");
     }
 
+    public void registersuccess(){
+        System.out.println("Register Successful !");
+    }
+
     public void registerfail(String n){
         System.out.println(n + "is not a valid course name");
     }
@@ -65,5 +69,12 @@ public class StudentView {
             System.out.printf("%-30s%-10s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getCredit(),c.get(i).getSpace());
         }
     }
+
+    public void validateTrue(String n){
+        System.out.println(n + " is selected");
+
+    }
+
 }
+
 

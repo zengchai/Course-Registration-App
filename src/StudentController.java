@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 
 public class StudentController {
-    
     private ArrayList<Student> StudentList ;
     private ArrayList<Course> CourseList ;
     private StudentView studentview;
@@ -14,27 +13,25 @@ public class StudentController {
         studentview= new StudentView();
     }
 
-    public void createStudentList(){
-        StudentList.add(studentview.createStudent());
-    }
+    public void StuControllerMenu(){
 
-    public void validateStudent(StudentView studentView){
-        for (int i=0; i<StudentList.size();i++ ){
-            String temp=studentView.confirmStudent();
-            if(temp ==StudentList.get(i).getName()){
-                index=i;
-                System.out.println(StudentList.get(i).getName()+ " is selected");
+        int i =0;
+        Student stu = studentview.confirmStudent();
+         for (int a = 0 ; a<StudentList.size(); a++){
+            if(stu.getName().equals(StudentList.get(a).getName())&&
+              stu.getMatricid().equals(StudentList.get(a).getMatricid())) {
+                this.index=a;
+                studentview.validateTrue(stu.getName());
+                break;
             }
             else{
-                System.out.println("Student name not found\n");
-                studentView.confirmStudent();
+                this.index = -1;
             }
-        }
-    }
+         }
 
-    public void StuControllerMenu(){
-        int choice = studentview.showstumenu();
-        switch (choice){
+        while(i!=4 && index!=-1){
+            i = studentview.showstumenu(StudentList.get(index));
+            switch (i){
             case 1: RegisterCourse(studentview);
             break;
 
@@ -43,17 +40,20 @@ public class StudentController {
 
             case 3: viewCourse();
             break;
+            }
+        };
+    }
 
-        }
+    public void createStudentList(){
+        StudentList.add(studentview.createStudent());
     }
 
     public void RegisterCourse(StudentView studentView){
         String temp=studentView.showRegisterCourse();
-        Student s = StudentList.get(index);
         for (int i =0;i<CourseList.size();i++){
             if(temp.equals(CourseList.get(i).getName())){
-                Course course= CourseList.get(i);
-                s.getRegisterCourse().add(course);
+                StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
+                studentview.registersuccess();
             }
             else{
                 studentView.registerfail(temp);
@@ -63,10 +63,9 @@ public class StudentController {
 
     public void removeCourse(StudentView studentView){
         String temp=studentView.showDeleteCourse();
-        Student s = StudentList.get(index);
-        for (int i =0;i<s.getCourseCount();i++){ 
-            if(temp.equals(s.getRegisterCourse().get(i).getName())){
-                s.getRegisterCourse().remove(i);
+        for (int i =0;i<CourseList.size();i++){ 
+            if(temp.equals(CourseList.get(i).getName())){
+                StudentList.get(index).getRegisterCourse().remove(i);
             }
             else{
                 studentView.removefail(temp);
