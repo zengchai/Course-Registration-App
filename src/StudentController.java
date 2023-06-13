@@ -14,9 +14,6 @@ public class StudentController {
         studentview= new StudentView();
     }
 
-    public void createStudentList(){
-        StudentList.add(studentview.createStudent());
-    }
 
     public void validateStudent(StudentView studentView){
         for (int i=0; i<StudentList.size();i++ ){
