@@ -13,10 +13,7 @@ public class StudentController {
         studentview= new StudentView();
     }
 
-<<<<<<< HEAD
-=======
     public void StuControllerMenu(){
->>>>>>> ze
 
         int i =0;
         Student stu = studentview.confirmStudent();
@@ -47,9 +44,6 @@ public class StudentController {
         };
     }
 
-    public void createStudentList(){
-        StudentList.add(studentview.createStudent());
-    }
 
     public void RegisterCourse(StudentView studentView){
         String temp=studentView.showRegisterCourse();

@@ -4,7 +4,6 @@ public class StudentView {
     Scanner sc = new Scanner(System.in);
     int choice;
 
-
     public Student confirmStudent(){
         System.out.println("\nPlease enter your name");
         String name = sc.nextLine();
