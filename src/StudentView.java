@@ -4,16 +4,6 @@ public class StudentView {
     Scanner sc = new Scanner(System.in);
     int choice;
 
-    public Student createStudent(){
-        System.out.println("\n\nNew Student");
-        System.out.println("\nStudent personal Information ");
-        System.out.print("Name: ");
-        String n = sc.nextLine();
-        System.out.print("Matric ID: ");
-        String id = sc.nextLine();
-        Student stu = new Student(n,id);
-        return stu;   
-    }
 
     public String confirmStudent(){
         System.out.println("\nPlease enter your name");
