@@ -73,5 +73,4 @@ public class StudentController {
     public void viewCourse(){
         studentview.displayCourseList(CourseList);
     }    
-
 }
