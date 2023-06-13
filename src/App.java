@@ -26,7 +26,7 @@ public class App {
         ArrayList <Student> stuList = new ArrayList<>();
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
-        AController aController = new AController(acadList, courseList);
+        AController aController = new AController(acadList, courseList, stuList);
         StudentController stuController = new StudentController(stuList,courseList);
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         Student s = new Student("Loy", "A21ES0223");

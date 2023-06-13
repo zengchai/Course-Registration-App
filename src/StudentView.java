@@ -2,7 +2,11 @@ import java.util.*;
 
 public class StudentView {
     Scanner sc = new Scanner(System.in);
+<<<<<<< HEAD
      int choice;
+=======
+    int choice;
+>>>>>>> main
 
     public Student confirmStudent(){
         System.out.println("\nPlease enter your name");
