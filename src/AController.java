@@ -43,6 +43,7 @@ public class AController {
                 this.index = -1;
             }
         }
+        
         while(i!=6 && index!=-1){
             clrscr();
             i = acadView.showAcadMenu(acadList.get(index));
