@@ -5,11 +5,13 @@ public class AController {
     ArrayList<Acad> acadList;
     ArrayList<Course> courseList;
     ArrayList<Lecturer> lecList;
+    ArrayList<Student> stuList;
     AcadView acadView;
 
-    public AController(ArrayList<Acad> acadList, ArrayList<Course> courseList) {
+    public AController(ArrayList<Acad> acadList, ArrayList<Course> courseList,ArrayList<Student> stuList) {
         this.acadList = acadList;
         this.courseList = courseList;
+        this.stuList = stuList;
         acadView = new AcadView();
     }
 
@@ -27,7 +29,7 @@ public class AController {
                 this.index = -1;
             }
         }
-        while(i!=4 && index!=-1){
+        while(i!=5 && index!=-1){
             i = acadView.showAcadMenu(acadList.get(index));
             if(i == 1){
                 this.creatCourse();
@@ -38,6 +40,9 @@ public class AController {
             if(i == 3){
                 this.viewCourse();
                 acadView.requestProceed();
+            }
+            if(i == 4){
+                this.createStudentList();
             }
         };
     }
@@ -58,5 +63,13 @@ public class AController {
                 courseList.remove(i);
             }
         }
+    }
+
+    public void createStudentList(){
+        this.stuList.add(acadView.createStudent());
+    }
+
+    public void createLectureList(){
+        this.lecList.add(acadView.createLecturer());
     }
 }

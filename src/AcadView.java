@@ -12,6 +12,14 @@ public class AcadView {
         System.out.println("\nCourse "+ code +" has been removed successfully!");
     }
 
+    public void addedStudent(String code){
+        System.out.println("\nStudent "+ code +" has been created successfully!");
+    }
+
+    public void addedLecturer(String code){
+        System.out.println("\nLecturer "+ code +" has been created successfully!");
+    }
+
     public Course displaycreatCourse(){
         System.out.println("\n\nCreating Course");
         System.out.println("\nCourse Details");
@@ -60,7 +68,8 @@ public class AcadView {
         System.out.println("[1] Create Course");
         System.out.println("[2] Remove Course");
         System.out.println("[3] View Course List");
-        System.out.println("[4] Exit");
+        System.out.println("[4] Add Student");
+        System.out.println("[5] Exit");
         System.out.print("\nNumber: ");
         int s = sin.nextInt();
         return s;
@@ -75,5 +84,31 @@ public class AcadView {
         System.out.print("Enter Password: ");
         String p = sin.nextLine();
         return new Acad(u, s, p);
+    }
+
+    public Student createStudent(){
+        System.out.println("\n\nAdding Student");
+        System.out.println("\nStudent personal Information ");
+        sin.nextLine();
+        System.out.printf("%-10s%-2s","Name",":");
+        String z = sin.nextLine();
+        System.out.printf("%-10s%-2s","Matric ID",":");
+        String w = sin.nextLine();
+        this.addedStudent(w);
+        Student stu = new Student(z,w);
+        return stu;   
+    }
+
+    public Lecturer createLecturer(){
+        System.out.println("\n\nAdding Lecturer");
+        System.out.println("\nLecturer personal Information ");
+        sin.nextLine();
+        System.out.printf("%-10s%-2s","Name",":");
+        String z = sin.nextLine();
+        System.out.printf("%-10s%-2s","Matric ID",":");
+        String w = sin.nextLine();
+        this.addedLecturer(w);
+        Lecturer stu = new Lecturer(z,w);
+        return stu;   
     }
 }
