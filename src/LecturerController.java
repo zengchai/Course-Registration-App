@@ -14,40 +14,24 @@ public class LecturerController {
         lecturerView= new LecturerView();
     }
 
-
-    /*public void validateStudent(StudentView studentView){
-        for (int i=0; i<lecturerList.size();i++ ){
-            String temp=lecturerView.confirmLecturer();
-            if(temp ==lecturerList.get(i).getName()){
-                index=i;
-                System.out.println(lecturerList.get(i).getName()+ " is selected");
-            }
-            else{
-                System.out.println("Lecturer name not found\n");
-                studentView.confirmStudent();
-            }
-        }
-    }*/
-
-    public void LectControllerMenu(){
+    public Lecturer LectControllerMenu(){
         int choice = 0;
 
-        /*int i =0;
-        Student stu = studentview.confirmStudent();
-         for (int a = 0 ; a<StudentList.size(); a++){
-            if(stu.getName().equals(StudentList.get(a).getName())&&
-              stu.getMatricid().equals(StudentList.get(a).getMatricid())) {
+        Lecturer lec = lecturerView.confirmLecturer();
+         for (int a = 0 ; a<lecturerList.size(); a++){
+            if(lec.getName().equals(lecturerList.get(a).getName())&&
+            lec.getLectID().equals(lecturerList.get(a).getLectID())) {
                 this.index=a;
-                studentview.validateTrue(stu.getName());
+                lecturerView.validateTrue(lec.getName());
                 break;
             }
             else{
                 this.index = -1;
             }
-         }*/
+         }
 
-        while(choice!=4){
-            choice = lecturerView.showlectmenu(lecturerList.get(choice));
+         while(choice!=4 && choice!=-1){
+            choice = lecturerView.showlectmenu(lecturerList.get(index));
 
             switch (choice){
                 case 1: chooseTeachingCourse(lecturerView);
@@ -61,6 +45,8 @@ public class LecturerController {
 
             }
         }
+
+        return lec;
     }
 
     public void chooseTeachingCourse(LecturerView lecturerView){
@@ -68,18 +54,19 @@ public class LecturerController {
         String temp = lecturerView.showTeachingCourse();
         //l = lecturerList.get(index);
         for (int i =0;i<courseList.size();i++){
-            if(temp.equals(courseList.get(i).getName())){
+            if(temp.equals(courseList.get(i).getCode())){
                 Course course= new Course(courseList.get(i).getName(), courseList.get(i).getCode(), courseList.get(i).getCredit(), courseList.get(i).getSpace());
                 //l.getTeachingCourse().add(course);
                 lect.add(course);
+                course.setLec(LectControllerMenu());
+                lecturerView.chooseSuccessful(temp);
                 //break; //to avoid always show register fail
                 
             }
-            else if(temp.equals(courseList.get(i).getName())){
+            else{
                 lecturerView.registerfail(temp);
 
             }
-
         }
     }   
 
@@ -88,8 +75,9 @@ public class LecturerController {
         String temp = lecturerView.showDeleteTeachingCourse();
         //Lecturer l = lecturerList.get(index);
         for (int i =0;i<courseList.size();i++){ 
-            if(temp.equals(courseList.get(i).getName())){
+            if(temp.equals(courseList.get(i).getCode())){
                 lect.remove(i);
+                lecturerView.removeSuccessful(temp);
                 
             }
             else{
