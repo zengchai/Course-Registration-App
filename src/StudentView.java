@@ -85,6 +85,12 @@ public class StudentView {
         System.out.println("Repeated Course Code Registration");
     }
 
+    public void requestProceed(){
+        sc.nextLine();
+        System.out.print("\nKindly enter any number to proceed: ");
+        String z = sc.nextLine();
+    }
+
 }
 
 
