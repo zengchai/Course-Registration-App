@@ -49,10 +49,12 @@ public class AController {
             if(i == 1){
                 clrscr();
                 this.creatCourse();
+                acadView.requestProceed();
             }
             if(i == 2){
                 clrscr();
                 this.removeCourse();
+                acadView.requestProceed();
             }
             if(i == 3){
                 clrscr();
@@ -62,10 +64,12 @@ public class AController {
             if(i == 4){
                 clrscr();
                 this.createStudentList();
+                acadView.requestProceed();
             }
             if(i == 5){
                 clrscr();
                 this.createLectureList();
+                acadView.requestProceed();
             }
         };
     }
