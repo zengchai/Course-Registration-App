@@ -11,8 +11,7 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
-<<<<<<< HEAD
-=======
+
     public static void showstumenu(Student s){
         System.out.println("\n\nWelcome to the course registration system, " + s.getName());
         System.out.println("\nKindly select the activity");
@@ -23,7 +22,7 @@ public class App {
         System.out.print("\nNumber: ");
     }
     
->>>>>>> lazyyam
+
     public static void showlecmenu(Lecturer l){
         System.out.println("\n\nWelcome to the course registration system, " + l.getName());
         System.out.println("\nKindly select the activity");
@@ -59,17 +58,6 @@ public class App {
             aController.displayMenu();
         }
         if(w==3){
-            /*do{
-            showlecmenu(l);
-            yss = z.nextInt();
-            if(yss == 1){
-                System.out.print("\nEnter the course code that you want to select:");
-                z.nextLine();
-                String d = z.nextLine();
-            }
-            if(yss == 2){
-            }}while(yss!=3);*/
-
             lectController.LectControllerMenu();
             
         }

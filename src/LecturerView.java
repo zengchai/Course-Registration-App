@@ -4,17 +4,6 @@ public class LecturerView {
     Scanner sc = new Scanner(System.in);
      int choice;
 
-    /*public Student createLecturer(){
-        System.out.println("\n\nNew Student");
-        System.out.println("\nStudent personal Information ");
-        System.out.print("Name: ");
-        String n = sc.nextLine();
-        System.out.print("Matric ID: ");
-        String id = sc.nextLine();
-        Student stu = new Student(n,id);
-        return stu;   
-    }*/
-
     public String confirmLecturer(){
         System.out.println("\nPlease enter your name");
         String name = sc.nextLine();
@@ -48,10 +37,10 @@ public class LecturerView {
     public String showDeleteTeachingCourse(){ //Delete teaching course
         System.out.println("\nDelete teaching course: ");
         sc.nextLine(); //
-        System.out.print("Enter course name: ");
-        String Cname=sc.nextLine();
+        System.out.print("Enter course code: ");
+        String Ccode=sc.nextLine();
         System.out.println();
-        return Cname;
+        return Ccode;
     }
 
     public void removefail(String n){
