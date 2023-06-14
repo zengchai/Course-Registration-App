@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Lecturer {
     private Staff lec;
     private ArrayList<Course> teachingCourse;
-   private int courseCount;
+    private int courseCount;
     
     public Lecturer() {
         this.lec = new Staff();

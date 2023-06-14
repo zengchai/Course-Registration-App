@@ -2,18 +2,7 @@ import java.util.*;
 
 public class LecturerView {
     Scanner sc = new Scanner(System.in);
-     int choice;
-
-    /*public Student createLecturer(){
-        System.out.println("\n\nNew Student");
-        System.out.println("\nStudent personal Information ");
-        System.out.print("Name: ");
-        String n = sc.nextLine();
-        System.out.print("Matric ID: ");
-        String id = sc.nextLine();
-        Student stu = new Student(n,id);
-        return stu;   
-    }*/
+    int choice;
 
     public String confirmLecturer(){
         System.out.println("\nPlease enter your name");

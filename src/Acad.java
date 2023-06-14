@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Acad {
     private Staff aca;
     private String password;
