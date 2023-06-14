@@ -1,5 +1,6 @@
-import java.util.ArrayList;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AController {
     int index;
@@ -9,16 +10,27 @@ public class AController {
     ArrayList<Student> stuList;
     AcadView acadView;
 
-    public AController(ArrayList<Acad> acadList, ArrayList<Course> courseList,ArrayList<Student> stuList, ArrayList<Lecturer> lecList) {
+    public AController(ArrayList<Acad> acadList, ArrayList<Course> courseList,ArrayList<Student> stuList, ArrayList<Lecturer> lecList,Scanner z) {
         this.acadList = acadList;
         this.courseList = courseList;
         this.stuList = stuList;
         this.lecList = lecList;
-        acadView = new AcadView();
+        acadView = new AcadView(z);
+    }
+
+    public static void clrscr(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime();
+        } catch (IOException | InterruptedException ex) {}
     }
 
     public void displayMenu(){
         int i = 0;
+        clrscr();
         Acad z = acadView.checkAcad();
         for (int a = 0 ; a<acadList.size(); a++){
             if((z.getAca().getName().equals(acadList.get(a).getAca().getName())) &&
@@ -31,25 +43,41 @@ public class AController {
                 this.index = -1;
             }
         }
+        
         while(i!=6 && index!=-1){
+            clrscr();
             i = acadView.showAcadMenu(acadList.get(index));
             if(i == 1){
+                clrscr();
                 this.creatCourse();
+                acadView.requestProceed();
             }
             if(i == 2){
+                clrscr();
                 this.removeCourse();
+                acadView.requestProceed();
             }
             if(i == 3){
+                clrscr();
                 this.viewCourse();
                 acadView.requestProceed();
             }
             if(i == 4){
+                clrscr();
                 this.createStudentList();
+                acadView.requestProceed();
             }
             if(i == 5){
+                clrscr();
                 this.createLectureList();
+                acadView.requestProceed();
             }
         };
+        
+        if(index==-1){
+            acadView.errorMessage();
+            acadView.requestProceed();
+        }
     }
 
     public void creatCourse(){
@@ -58,7 +86,7 @@ public class AController {
     }
 
     public void viewCourse(){
-        acadView.displayCourseList(courseList);
+        acadView.displayCourseList(courseList);        
     }
 
     public void removeCourse(){
