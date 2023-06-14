@@ -3,7 +3,7 @@ public class Staff {
     protected String staffId;
     
     public Staff() {
-        name = "Null";
+        name = "";
         staffId = "";
     }
     public Staff(String name, String staffId) {
