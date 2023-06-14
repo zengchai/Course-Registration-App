@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +12,17 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
-    
+
+    public static void clrscr(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime();
+        } catch (IOException | InterruptedException ex) {}
+    }
+
     public static void main(String[] args) throws Exception {
         ArrayList <Course> courseList = new ArrayList<>();
         ArrayList <Acad> acadList = new ArrayList<>();
@@ -20,7 +31,7 @@ public class App {
         Scanner z = new Scanner(System.in);
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
-        AController aController = new AController(acadList, courseList, stuList, lecList);
+        AController aController = new AController(acadList, courseList, stuList, lecList,z);
         StudentController stuController = new StudentController(stuList,courseList,z);
 
         Lecturer l = new Lecturer("Abdullah", "S33W1");
@@ -30,6 +41,7 @@ public class App {
 
         int w;
         do{
+        clrscr();
         showmenu();
         w = z.nextInt();
         if (w==1){
@@ -39,7 +51,6 @@ public class App {
             aController.displayMenu();
         }
         if(w==3){
-           
             lectController.LectControllerMenu();
             
         }
