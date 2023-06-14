@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class StudentController {
@@ -7,15 +8,16 @@ public class StudentController {
     private StudentView studentview;
     private int index;
 
-    public StudentController(ArrayList<Student> studentList, ArrayList<Course> courseList) {
+    public StudentController(ArrayList<Student> studentList, ArrayList<Course> courseList,Scanner z) {
         this.StudentList = studentList;
         this.CourseList = courseList;
-        studentview= new StudentView();
+        studentview= new StudentView(z);
     }
 
     public void StuControllerMenu(){
 
         int i =0;
+
         Student stu = studentview.confirmStudent();
          for (int a = 0 ; a<StudentList.size(); a++){
             if(stu.getName().equals(StudentList.get(a).getName())&&
@@ -32,48 +34,49 @@ public class StudentController {
         while(i!=4 && index!=-1){
             i = studentview.showstumenu(StudentList.get(index));
             switch (i){
-            case 1: {RegisterCourse(studentview);
-                    studentview.displayCourseList(CourseList);
-                    break;
-                    }
-
-            case 2: removeCourse(studentview);
+            case 1: RegisterCourse();
             break;
 
-            case 3: viewCourse();
+            case 2: removeCourse();
+            break;
+
+            case 3: viewStuCourse();
             break;
             }
         };
         
     }
 
-    public void RegisterCourse(StudentView studentView){
+    public void RegisterCourse(){
         studentview.displayCourseList(CourseList);
-        String temp=studentView.showRegisterCourse();
+        String temp=studentview.showRegisterCourse();
         for (int i =0;i<CourseList.size();i++){
-            if(temp.equals(CourseList.get(i).getName())){
+            if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
+                CourseList.get(i).getStuList().add(StudentList.get(index));
                 studentview.registersuccess();
+                CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
             }
             else{
-                studentView.registerfail(temp);
+                studentview.registerfail(temp);
             }
         }
     }   
 
-    public void removeCourse(StudentView studentView){
-        String temp=studentView.showDeleteCourse();
+    public void removeCourse(){
+        String temp=studentview.showDeleteCourse();
         for (int i =0;i<CourseList.size();i++){ 
-            if(temp.equals(CourseList.get(i).getName())){
+            if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().remove(i);
+                CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
             }
             else{
-                studentView.removefail(temp);
+                studentview.removefail(temp);
             }
         }   
     }
 
-    public void viewCourse(){
-        studentview.displayCourseList(CourseList);
+    public void viewStuCourse(){
+        studentview.displayStuCourse(StudentList.get(index).getRegisterCourse());
     }    
 }
