@@ -11,6 +11,7 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
+    
     public static void main(String[] args) throws Exception {
         ArrayList <Course> courseList = new ArrayList<>();
         ArrayList <Acad> acadList = new ArrayList<>();
@@ -19,12 +20,12 @@ public class App {
         
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
-        AController aController = new AController(acadList, courseList, stuList,lecList);
+        AController aController = new AController(acadList, courseList, stuList, lecList);
         StudentController stuController = new StudentController(stuList,courseList);
 
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         lecList.add(l);
-        LecturerController lectController = new LecturerController(lecList,courseList); /***** */
+        LecturerController lectController = new LecturerController(lecList,courseList); 
 
         Scanner z = new Scanner(System.in);
         int w;
