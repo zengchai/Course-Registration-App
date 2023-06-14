@@ -13,7 +13,7 @@ public class StudentView {
     }
 
     public int showstumenu(Student student){
-        System.out.println("\n\nWelcome to the course registration system! "+student.getName());
+        System.out.println("\nWelcome to the course registration system! "+student.getName());
         System.out.println("\nKindly select the activity");
         System.out.println("[1] Register Course");
         System.out.println("[2] Drop Course");
@@ -60,7 +60,7 @@ public class StudentView {
     }
 
     public void validateTrue(String n){
-        System.out.println(n + " is selected");
+        System.out.println("Student " + n + " is selected");
 
     }
 

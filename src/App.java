@@ -16,15 +16,21 @@ public class App {
         ArrayList <Acad> acadList = new ArrayList<>();
         ArrayList <Lecturer> lecList = new ArrayList<>();
         ArrayList <Student> stuList = new ArrayList<>();
+        
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList, stuList,lecList);
         StudentController stuController = new StudentController(stuList,courseList);
-        
+
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         lecList.add(l);
         LecturerController lectController = new LecturerController(lecList,courseList); /***** */
 
+<<<<<<< HEAD
+=======
+        Student s = new Student("Loy", "A21ES0223");
+        stuList.add(s);
+>>>>>>> a9fbbe5d2018da3fb8b85729b81abdc74441646b
         Scanner z = new Scanner(System.in);
         int w;
         do{
@@ -37,6 +43,7 @@ public class App {
             aController.displayMenu();
         }
         if(w==3){
+           
             lectController.LectControllerMenu();
             
         }
