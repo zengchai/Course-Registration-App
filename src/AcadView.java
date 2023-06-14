@@ -108,7 +108,6 @@ public class AcadView {
     public Lecturer createLecturer(){
         System.out.println("Adding Lecturer");
         System.out.println("\nLecturer personal Information ");
-        sin.nextLine();
         System.out.printf("%-10s%-2s","Name",":");
         String z = sin.nextLine();
         System.out.printf("%-10s%-2s","Staff ID",":");
