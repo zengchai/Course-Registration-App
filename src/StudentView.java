@@ -55,7 +55,7 @@ public class StudentView {
         System.out.printf("\n%-30s%-10s%-7s%-7s\n","Course Name","Code","Credit","Capity");
         System.out.printf("%-30s%-10s%-7s%-7s\n","-----------","----","------","------");
         for (int i=0;i<c.size();i++){
-            System.out.printf("%-30s%-10s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getCredit(),c.get(i).getSpace());
+            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
         }
     }
 
