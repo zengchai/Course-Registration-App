@@ -24,8 +24,9 @@ public class Lecturer {
         return courseCount;
     }
     
-    public ArrayList<Course> getRegisterCourse() {
+    public ArrayList<Course> getTeachingCourse() {
         return teachingCourse;
     }
 
 }
+
