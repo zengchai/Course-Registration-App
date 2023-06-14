@@ -69,7 +69,8 @@ public class AcadView {
         System.out.println("[2] Remove Course");
         System.out.println("[3] View Course List");
         System.out.println("[4] Add Student");
-        System.out.println("[5] Exit");
+        System.out.println("[5] Add Lecturer");
+        System.out.println("[6] Exit");
         System.out.print("\nNumber: ");
         int s = sin.nextInt();
         return s;
@@ -105,7 +106,7 @@ public class AcadView {
         sin.nextLine();
         System.out.printf("%-10s%-2s","Name",":");
         String z = sin.nextLine();
-        System.out.printf("%-10s%-2s","Matric ID",":");
+        System.out.printf("%-10s%-2s","Staff ID",":");
         String w = sin.nextLine();
         this.addedLecturer(w);
         Lecturer stu = new Lecturer(z,w);
