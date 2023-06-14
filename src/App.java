@@ -26,11 +26,6 @@ public class App {
         lecList.add(l);
         LecturerController lectController = new LecturerController(lecList,courseList); /***** */
 
-<<<<<<< HEAD
-=======
-        Student s = new Student("Loy", "A21ES0223");
-        stuList.add(s);
->>>>>>> a9fbbe5d2018da3fb8b85729b81abdc74441646b
         Scanner z = new Scanner(System.in);
         int w;
         do{
