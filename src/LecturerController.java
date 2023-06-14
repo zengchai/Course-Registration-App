@@ -6,8 +6,8 @@ public class LecturerController {
     private ArrayList<Course> courseList ;
     private ArrayList<Course> lect = new ArrayList<Course>();
     private LecturerView lecturerView;
-    Lecturer l;
-    private int index;
+    //Lecturer l;
+    //private int index;
 
     public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList) {
         this.lecturerList = lecturerList;
@@ -57,7 +57,7 @@ public class LecturerController {
         String temp = lecturerView.showTeachingCourse();
         //l = lecturerList.get(index);
         for (int i =0;i<courseList.size();i++){
-            if(temp.equals(courseList.get(i).getName())){
+            if(temp.equals(courseList.get(i).getCode())){
                 Course course= new Course(courseList.get(i).getName(), courseList.get(i).getCode(), courseList.get(i).getCredit(), courseList.get(i).getSpace());
                 //l.getTeachingCourse().add(course);
                 lect.add(course);
@@ -76,7 +76,7 @@ public class LecturerController {
         String temp = lecturerView.showDeleteTeachingCourse();
         //Lecturer l = lecturerList.get(index);
         for (int i =0;i<courseList.size();i++){ 
-            if(temp.equals(courseList.get(i).getName())){
+            if(temp.equals(courseList.get(i).getCode())){
                 lect.remove(i);
                 
             }
