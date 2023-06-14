@@ -45,6 +45,7 @@ public class StudentController {
     }
 
     public void RegisterCourse(StudentView studentView){
+        studentview.displayCourseList(CourseList);
         String temp=studentView.showRegisterCourse();
         for (int i =0;i<CourseList.size();i++){
             if(temp.equals(CourseList.get(i).getName())){

@@ -25,16 +25,17 @@ public class StudentView {
     }
 
     public String showRegisterCourse(){
-        System.out.println("\nRegister course: ");
-        System.out.println("Enter course name: ");
+        System.out.print("\nRegister course: ");
+        System.out.print("Enter course name: ");
         sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
     }
     
     public String showDeleteCourse(){
-        System.out.println("\nDelete course: ");
-        System.out.println("Enter course name: ");
+        System.out.print("\nDelete course: ");
+        System.out.print("Enter course name: ");
+        sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
     }
