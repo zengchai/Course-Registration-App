@@ -3,13 +3,15 @@ import java.util.ArrayList;
 public class LecturerController {
     
     private ArrayList<Lecturer> lecturerList ;
-    private ArrayList<Course> CourseList ;
+    private ArrayList<Course> courseList ;
+    private ArrayList<Course> lect = new ArrayList<Course>();
     private LecturerView lecturerView;
+    Lecturer l;
     private int index;
 
     public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList) {
         this.lecturerList = lecturerList;
-        this.CourseList = courseList;
+        this.courseList = courseList;
         lecturerView= new LecturerView();
     }
 
@@ -32,48 +34,67 @@ public class LecturerController {
     }*/
 
     public void LectControllerMenu(){
-        int choice = lecturerView.showstumenu();
-        switch (choice){
-            case 1: chooseTeachingCourse(lecturerView);
-            break;
+        int choice = 0;
+        while(choice!=4){
+            choice = lecturerView.showlectmenu();
 
-            case 2: removeTeachingCourse(lecturerView);
-            break;
+            switch (choice){
+                case 1: chooseTeachingCourse(lecturerView);
+                break;
 
-            case 3: viewCourse();
-            break;
+                case 2: removeTeachingCourse(lecturerView);
+                break;
 
+                case 3: viewSelectedTeachingCourse();
+                break;
+
+            }
         }
     }
 
     public void chooseTeachingCourse(LecturerView lecturerView){
-        String temp=lecturerView.showTeachingCourse();
-        Lecturer l = lecturerList.get(index);
-        for (int i =0;i<CourseList.size();i++){
-            if(temp.equals(CourseList.get(i).getName())){
-                Course course= CourseList.get(i);
-                l.getRegisterCourse().add(course);
+        viewCourse();
+        String temp = lecturerView.showTeachingCourse();
+        //l = lecturerList.get(index);
+        for (int i =0;i<courseList.size();i++){
+            if(temp.equals(courseList.get(i).getName())){
+                Course course= new Course(courseList.get(i).getName(), courseList.get(i).getCode(), courseList.get(i).getCredit(), courseList.get(i).getSpace());
+                //l.getTeachingCourse().add(course);
+                lect.add(course);
+                //break; //to avoid always show register fail
+                
             }
-            else{
+            else if(temp.equals(courseList.get(i).getName())){
                 lecturerView.registerfail(temp);
+
             }
+
         }
     }   
 
     public void removeTeachingCourse(LecturerView lecturerView){
-        String temp=lecturerView.showDeleteTeachingCourse();
-        Lecturer l = lecturerList.get(index);
-        for (int i =0;i<l.getCourseCount();i++){ 
-            if(temp.equals(l.getRegisterCourse().get(i).getName())){
-                l.getRegisterCourse().remove(i);
+        viewSelectedTeachingCourse();
+        String temp = lecturerView.showDeleteTeachingCourse();
+        //Lecturer l = lecturerList.get(index);
+        for (int i =0;i<courseList.size();i++){ 
+            if(temp.equals(courseList.get(i).getName())){
+                lect.remove(i);
+                
             }
             else{
-                studentView.removefail(temp);
+                lecturerView.removefail(temp);
+                
             }
         }   
     }
 
+    public void viewSelectedTeachingCourse(){
+        
+        lecturerView.displayTeachingCourse(lect);
+
+    } 
+
     public void viewCourse(){
-        studentview.displayCourseList(CourseList);
+        lecturerView.displayCourseList(courseList);
     } 
 }
