@@ -41,7 +41,6 @@ public class StudentView {
     
     public String showDeleteCourse(){
         System.out.println("\nDelete course: ");
-        sc.nextLine();
         System.out.print("Enter course code: ");
         String Cname=sc.nextLine();
         return Cname;
@@ -49,6 +48,10 @@ public class StudentView {
 
     public void removefail(String n){
         System.out.println(n + "is not a valid course name");
+    }
+
+     public void removesuccess(){
+        System.out.println("Selected course is deleted successfully");
     }
 
     public void registersuccess(){
@@ -73,6 +76,7 @@ public class StudentView {
     }
 
     public void displayStuCourse(ArrayList<Course> StuCList){
+        sc.nextLine();
         System.out.println("Your Course Registration List");
         System.out.printf("\n%-30s%-10s%-7s%-7s\n","Course Name","Code","Credit","Capity");
         System.out.printf("%-30s%-10s%-7s%-7s\n","-----------","----","------","------");
@@ -86,9 +90,12 @@ public class StudentView {
     }
 
     public void requestProceed(){
-        sc.nextLine();
         System.out.print("\nKindly enter any number to proceed: ");
         String z = sc.nextLine();
+    }
+
+    public void errorMessage(){
+        System.out.println("\nStudent information is incorrect. Please log in again.");
     }
 
 }

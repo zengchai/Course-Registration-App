@@ -43,7 +43,8 @@ public class App {
         /*Lecturer l = new Lecturer("Abdullah", "S33W1");
         lecList.add(l);
         Student a = new Student("Loy", "ABC");
-        stuList.add(a);*/
+        stuList.add(a);
+        */
 
 
         int w;
