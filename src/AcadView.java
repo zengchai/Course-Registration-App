@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AcadView {
-    Scanner sin = new Scanner(System.in);
+    Scanner sin;
+
+    public AcadView(Scanner sc){
+        this.sin = sc;
+    }
 
     public void createdCourse(String code){
         System.out.println("\nCourse "+ code +" has been created successfully!");
@@ -21,7 +25,7 @@ public class AcadView {
     }
 
     public Course displaycreatCourse(){
-        System.out.println("\n\nCreating Course");
+        System.out.println("Creating Course");
         System.out.println("\nCourse Details");
         sin.nextLine();
         System.out.printf("%-8s%-2s","Name",":");
@@ -44,16 +48,24 @@ public class AcadView {
 
     public void displayCourseList(ArrayList<Course> c){
 
+<<<<<<< HEAD
         System.out.println("\nAvailable Course List");
         System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Credit","Capity");
         System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","------","------");
         for (int i=0;i<c.size();i++){
             System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getCredit(),c.get(i).getSpace());
+=======
+        System.out.println("Available Course List");
+        System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Lecturer","Credit","Capity");
+        System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","--------","------","------");
+        for (int i=0;i<c.size();i++){
+            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
+>>>>>>> main
         }
     }
 
     public String displayRemoveCourse(ArrayList<Course> c){
-        System.out.println("\n\nRemoving Course");
+        System.out.println("Removing Course");
         this.displayCourseList(c);
         sin.nextLine();
         System.out.print("\nEnter the code that you want to remove: ");
@@ -63,7 +75,7 @@ public class AcadView {
     }
     
     public int showAcadMenu(Acad acad){
-        System.out.println("\n\nWelcome to the course registration system, " + acad.getAca().getName());
+        System.out.println("Welcome to the course registration system, " + acad.getAca().getName());
         System.out.println("\nKindly select the activity:");
         System.out.println("[1] Create Course");
         System.out.println("[2] Remove Course");
@@ -77,8 +89,9 @@ public class AcadView {
     }
 
     public Acad checkAcad(){
-        System.out.println("\n\nLog in\n");
-        System.out.print("Enter Usename: ");
+        System.out.println("Log in\n");
+        sin.nextLine();
+        System.out.print("Enter Username: ");
         String u = sin.nextLine();
         System.out.print("Enter Staffid: ");
         String s = sin.nextLine();
@@ -88,7 +101,7 @@ public class AcadView {
     }
 
     public Student createStudent(){
-        System.out.println("\n\nAdding Student");
+        System.out.println("Adding Student");
         System.out.println("\nStudent personal Information ");
         sin.nextLine();
         System.out.printf("%-10s%-2s","Name",":");
@@ -101,7 +114,7 @@ public class AcadView {
     }
 
     public Lecturer createLecturer(){
-        System.out.println("\n\nAdding Lecturer");
+        System.out.println("Adding Lecturer");
         System.out.println("\nLecturer personal Information ");
         sin.nextLine();
         System.out.printf("%-10s%-2s","Name",":");

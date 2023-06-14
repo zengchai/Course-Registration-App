@@ -1,4 +1,6 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class StudentController {
@@ -7,15 +9,16 @@ public class StudentController {
     private StudentView studentview;
     private int index;
 
-    public StudentController(ArrayList<Student> studentList, ArrayList<Course> courseList) {
+    public StudentController(ArrayList<Student> studentList, ArrayList<Course> courseList,Scanner z) {
         this.StudentList = studentList;
         this.CourseList = courseList;
-        studentview= new StudentView();
+        studentview= new StudentView(z);
     }
 
     public void StuControllerMenu(){
 
         int i =0;
+
         Student stu = studentview.confirmStudent();
          for (int a = 0 ; a<StudentList.size(); a++){
             if(stu.getName().equals(StudentList.get(a).getName())&&
@@ -32,44 +35,73 @@ public class StudentController {
         while(i!=4 && index!=-1){
             i = studentview.showstumenu(StudentList.get(index));
             switch (i){
-            case 1: RegisterCourse(studentview);
+            case 1: RegisterCourse();
+            studentview.requestProceed();
             break;
 
-            case 2: removeCourse(studentview);
+            case 2: removeCourse();
+            studentview.requestProceed();
             break;
 
-            case 3: viewCourse();
+            case 3: viewStuCourse();
+            studentview.requestProceed();
             break;
             }
         };
+        
     }
 
-    public void RegisterCourse(StudentView studentView){
-        String temp=studentView.showRegisterCourse();
-        for (int i =0;i<CourseList.size();i++){
-            if(temp.equals(CourseList.get(i).getName())){
-                StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
-                studentview.registersuccess();
-            }
-            else{
-                studentView.registerfail(temp);
+    public void RegisterCourse(){
+        boolean repeat = false;
+
+        studentview.displayCourseList(CourseList);
+        String temp=studentview.showRegisterCourse();
+        for(int i=0;i<StudentList.get(index).getRegisterCourse().size();i++)
+        { if (temp.equals(StudentList.get(index).getRegisterCourse().get(i).getCode()))
+            {repeat = true;
+            studentview.displayRepeatTrue();
             }
         }
-    }   
+        if(repeat == false){
+            for (int i =0;i<CourseList.size();i++){
+                if(temp.equals(CourseList.get(i).getCode())){
+                    StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
+                    CourseList.get(i).getStuList().add(StudentList.get(index));
+                    studentview.registersuccess();
+                    CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
+                }
+                else{
+                    studentview.registerfail(temp);
+                }
+            }
+        }
+    }
+   
 
-    public void removeCourse(StudentView studentView){
-        String temp=studentView.showDeleteCourse();
+    public void removeCourse(){
+        String temp=studentview.showDeleteCourse();
         for (int i =0;i<CourseList.size();i++){ 
-            if(temp.equals(CourseList.get(i).getName())){
+            if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().remove(i);
+                CourseList.get(i).setSpace((CourseList.get(i).getSpace()+1));
             }
             else{
-                studentView.removefail(temp);
+                studentview.removefail(temp);
             }
         }   
     }
 
-    public void viewCourse(){
-        studentview.displayCourseList(CourseList);
+    public void viewStuCourse(){
+        studentview.displayStuCourse(StudentList.get(index).getRegisterCourse());
     }    
+
+    public static void clrscr(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime();
+        } catch (IOException | InterruptedException ex) {}
+    }
 }

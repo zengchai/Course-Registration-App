@@ -1,13 +1,20 @@
 import java.util.*;
 
 public class StudentView {
-    Scanner sc = new Scanner(System.in);
-     int choice;
+
+    Scanner sc;
+
+    public StudentView(Scanner z){
+        this.sc=z;
+
+    }
 
     public Student confirmStudent(){
-        System.out.println("\nPlease enter your name");
+        System.out.println("\nStudent Log in ");
+        sc.nextLine();
+        System.out.print("\nPlease enter your name: ");
         String name = sc.nextLine();
-        System.out.println("\nPlease enter your matric id");
+        System.out.print("Please enter your matric id: ");
         String id = sc.nextLine();
         return new Student(name, id);
     }
@@ -20,20 +27,22 @@ public class StudentView {
         System.out.println("[3] View Course");
         System.out.println("[4] Exit");
         System.out.print("\nChoice: ");
-        choice = sc.nextInt();
+        int choice = sc.nextInt();
         return choice;
     }
 
     public String showRegisterCourse(){
         System.out.println("\nRegister course: ");
-        System.out.println("Enter course name: ");
+        sc.nextLine();
+        System.out.print("Enter course code: ");
         String Cname=sc.nextLine();
         return Cname;
     }
     
     public String showDeleteCourse(){
         System.out.println("\nDelete course: ");
-        System.out.println("Enter course name: ");
+        sc.nextLine();
+        System.out.print("Enter course code: ");
         String Cname=sc.nextLine();
         return Cname;
     }
@@ -61,7 +70,25 @@ public class StudentView {
 
     public void validateTrue(String n){
         System.out.println("Student " + n + " is selected");
+    }
 
+    public void displayStuCourse(ArrayList<Course> StuCList){
+        System.out.println("Your Course Registration List");
+        System.out.printf("\n%-30s%-10s%-7s%-7s\n","Course Name","Code","Credit","Capity");
+        System.out.printf("%-30s%-10s%-7s%-7s\n","-----------","----","------","------");
+        for (int i=0;i<StuCList.size();i++){
+            System.out.printf("%-30s%-10s%-7s%-7s\n",StuCList.get(i).getName(),StuCList.get(i).getCode(),StuCList.get(i).getCredit(),StuCList.get(i).getSpace());
+        }
+    }
+
+    public void displayRepeatTrue(){
+        System.out.println("Repeated Course Code Registration");
+    }
+
+    public void requestProceed(){
+        sc.nextLine();
+        System.out.print("\nKindly enter any number to proceed: ");
+        String z = sc.nextLine();
     }
 
 }
