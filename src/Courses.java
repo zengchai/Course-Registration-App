@@ -1,4 +1,4 @@
-public class Course {
+public class Courses {
 
     protected String name;
     protected String code;
