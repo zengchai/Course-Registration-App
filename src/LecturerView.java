@@ -1,8 +1,13 @@
 import java.util.*;
 
 public class LecturerView {
-    Scanner sc = new Scanner(System.in);
      int choice;
+
+    Scanner sc;
+
+    public LecturerView(Scanner sc){
+        this.sc = sc;
+    }
 
     public void removeSuccessful(String code){
         System.out.println("\nTeaching course "+ code +" has been removed successfully!");
@@ -26,16 +31,18 @@ public class LecturerView {
     }
 
     public Lecturer confirmLecturer(){
-        System.out.println("\nPlease enter your name");
+        sc.nextLine();
+        System.out.println("Log in\n");
+        System.out.print("Please enter your name: ");
         String name = sc.nextLine();
-        System.out.println("\nPlease enter your lecturer ID");
+        System.out.print("Please enter your lecturer ID: ");
         String lectId = sc.nextLine();
         return new Lecturer(name, lectId);
     }
 
     public int showlectmenu(Lecturer lecturer){
         do{
-            System.out.println("\n\nWelcome to the course registration system, " + lecturer.getName());
+            System.out.println("\nWelcome to the course registration system, " + lecturer.getName());
             System.out.println("\nKindly select the activity");
             System.out.println("[1] Select Course to teach");
             System.out.println("[2] Delete Teaching Course");
@@ -66,22 +73,35 @@ public class LecturerView {
         return Ccode;
     }
 
-    public void displayTeachingCourse(ArrayList<Course> c){ //show available course to teach
+    public void displayTeachingCourse(ArrayList<Course> lectList){ //show available course to teach
         System.out.println("\nSelected Teaching Course List");
         System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Lecturer","Credit","Capity");
         System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","--------","------","------");
-        for (int i=0;i<c.size();i++){
-            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
+        for (int i=0;i<lectList.size();i++){
+            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",lectList.get(i).getName(),lectList.get(i).getCode(),lectList.get(i).getLec().getName(),lectList.get(i).getCredit(),lectList.get(i).getSpace());
         }
     }
 
-    public void displayCourseList(ArrayList<Course> c){ //show available course to teach
-        System.out.println("\nAvailable Course List");
+    public void displayCourseList(ArrayList<Course> lectList){ //show available course to teach
+        System.out.println("\nSelected Teaching Course List");
         System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Lecturer","Credit","Capity");
         System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","--------","------","------");
-        for (int i=0;i<c.size();i++){
-            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
+        for (int i=0;i<lectList.size();i++){
+            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",lectList.get(i).getName(),lectList.get(i).getCode(),lectList.get(i).getLec().getName(),lectList.get(i).getCredit(),lectList.get(i).getSpace());
         }
     }
 
+    public void displayRepeatTrue(){
+        System.out.println("Repeated Course Code Selection");
+    }
+
+    public void displayClash(){
+        System.out.println("This Course Already Has A Lecturer");
+    }
+
+    public void requestProceed(){
+        sc.nextLine();
+        System.out.print("\nKindly enter any number to proceed: ");
+        String z = sc.nextLine();
+    }
 }

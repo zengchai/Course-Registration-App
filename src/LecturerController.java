@@ -1,22 +1,23 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LecturerController {
     
     private ArrayList<Lecturer> lecturerList ;
     private ArrayList<Course> courseList ;
-    private ArrayList<Course> lect = new ArrayList<Course>();
     private LecturerView lecturerView;
     private int index;
 
-    public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList) {
+    public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList, Scanner z) {
         this.lecturerList = lecturerList;
         this.courseList = courseList;
-        lecturerView= new LecturerView();
+        lecturerView= new LecturerView(z);
     }
 
-    public Lecturer LectControllerMenu(){
+    public void LectControllerMenu(){
+        clrscr();
         int choice = 0;
-
         Lecturer lec = lecturerView.confirmLecturer();
          for (int a = 0 ; a<lecturerList.size(); a++){
             if(lec.getName().equals(lecturerList.get(a).getName())&&
@@ -31,41 +32,68 @@ public class LecturerController {
          }
 
          while(choice!=4 && index!=-1){
+            clrscr();
             choice = lecturerView.showlectmenu(lecturerList.get(index));
 
             switch (choice){
-                case 1: chooseTeachingCourse(lecturerView);
+                case 1:  
+                clrscr();
+                this.chooseTeachingCourse(lecturerView);
+                lecturerView.requestProceed();
                 break;
 
-                case 2: removeTeachingCourse(lecturerView);
+                case 2: 
+                clrscr();
+                this.removeTeachingCourse(lecturerView);
+                lecturerView.requestProceed();
                 break;
 
-                case 3: viewSelectedTeachingCourse();
+                case 3: 
+                clrscr();
+                this.viewSelectedTeachingCourse();
+                lecturerView.requestProceed();
                 break;
 
             }
         }
-
-        return lec;
     }
 
     public void chooseTeachingCourse(LecturerView lecturerView){
-        viewCourse();
+        lecturerView.displayTeachingCourse(courseList);
         String temp = lecturerView.showTeachingCourse();
-        //l = lecturerList.get(index);
-        for (int i =0;i<courseList.size();i++){
-            if(temp.equals(courseList.get(i).getCode())){
-                Course course= new Course(courseList.get(i).getName(), courseList.get(i).getCode(), courseList.get(i).getCredit(), courseList.get(i).getSpace());
-                //l.getTeachingCourse().add(course);
-                lect.add(course);
-                course.setLec(LectControllerMenu());
-                lecturerView.chooseSuccessful(temp);
-                //break; //to avoid always show register fail
-                
-            }
-            else{
-                lecturerView.registerfail(temp);
+        boolean repeat = false;
+        boolean clash = false;
 
+        for(int i=0;i<lecturerList.get(index).getSelectedCourse().size();i++)
+        { 
+            if (temp.equals(lecturerList.get(index).getSelectedCourse().get(i).getCode()))
+            {
+                repeat = true;
+                lecturerView.displayRepeatTrue();
+            }
+        }
+
+        for(int i=0;i<lecturerList.get(index).getSelectedCourse().size();i++)
+        { 
+            if (!(lecturerList.get(index).getSelectedCourse().get(i).getLec().getName().equals(courseList.get(i).getLec().getName())))
+            {
+                clash = true;
+                lecturerView.displayClash();
+            }
+        }
+
+        if(repeat == false && clash == false){
+            for (int i =0;i<courseList.size();i++){
+                if(temp.equals(courseList.get(i).getCode())){
+                    lecturerList.get(index).getSelectedCourse().add(courseList.get(i)); //inside lect will have teached course
+                    courseList.get(i).setLec(lecturerList.get(index)); //set teaching lec name
+                    lecturerView.chooseSuccessful(temp);
+                
+                }
+                else{
+                    lecturerView.registerfail(temp);
+
+                }
             }
         }
     }   
@@ -73,27 +101,33 @@ public class LecturerController {
     public void removeTeachingCourse(LecturerView lecturerView){
         viewSelectedTeachingCourse();
         String temp = lecturerView.showDeleteTeachingCourse();
-        //Lecturer l = lecturerList.get(index);
+
         for (int i =0;i<courseList.size();i++){ 
             if(temp.equals(courseList.get(i).getCode())){
-                lect.remove(i);
+                lecturerList.get(index).getSelectedCourse().remove(courseList.get(i));
                 lecturerView.removeSuccessful(temp);
-                
+
             }
             else{
                 lecturerView.removefail(temp);
-                
             }
         }   
     }
 
     public void viewSelectedTeachingCourse(){
-        
-        lecturerView.displayTeachingCourse(lect);
+        lecturerView.displayTeachingCourse(lecturerList.get(index).getSelectedCourse());
 
     } 
 
-    public void viewCourse(){
-        lecturerView.displayCourseList(courseList);
-    } 
+    public static void clrscr(){
+        //Clears Screen in java
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime();
+            } catch (IOException | InterruptedException ex) {}
+        }
+
 }
+
