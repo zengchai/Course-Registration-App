@@ -41,7 +41,7 @@ public class App {
         StudentController stuController = new StudentController(stuList,courseList,z);
         LecturerController lectController = new LecturerController(lecList,courseList,z); 
         /*Lecturer l = new Lecturer("Abdullah", "S33W1");
-        lecList.add(l);*/
+        lecList.add(l);
         Student a = new Student("Loy", "ABC");
         stuList.add(a);*/
 
