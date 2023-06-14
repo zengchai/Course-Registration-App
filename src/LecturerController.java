@@ -6,11 +6,7 @@ public class LecturerController {
     private ArrayList<Course> courseList ;
     private ArrayList<Course> lect = new ArrayList<Course>();
     private LecturerView lecturerView;
-<<<<<<< HEAD
-=======
-    Lecturer l;
     private int index;
->>>>>>> main
 
     public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList) {
         this.lecturerList = lecturerList;
@@ -18,9 +14,6 @@ public class LecturerController {
         lecturerView= new LecturerView();
     }
 
-    /*public void createStudentList(){
-        lecturerList.add(lecturerList.createStudent());
-    }*/
 
     /*public void validateStudent(StudentView studentView){
         for (int i=0; i<lecturerList.size();i++ ){
@@ -38,8 +31,23 @@ public class LecturerController {
 
     public void LectControllerMenu(){
         int choice = 0;
+
+        /*int i =0;
+        Student stu = studentview.confirmStudent();
+         for (int a = 0 ; a<StudentList.size(); a++){
+            if(stu.getName().equals(StudentList.get(a).getName())&&
+              stu.getMatricid().equals(StudentList.get(a).getMatricid())) {
+                this.index=a;
+                studentview.validateTrue(stu.getName());
+                break;
+            }
+            else{
+                this.index = -1;
+            }
+         }*/
+
         while(choice!=4){
-            choice = lecturerView.showlectmenu();
+            choice = lecturerView.showlectmenu(lecturerList.get(choice));
 
             switch (choice){
                 case 1: chooseTeachingCourse(lecturerView);
