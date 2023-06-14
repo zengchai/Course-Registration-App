@@ -1,13 +1,20 @@
 import java.util.*;
 
 public class StudentView {
-    Scanner sc = new Scanner(System.in);
-     int choice;
+
+    Scanner sc;
+
+    public StudentView(Scanner z){
+        this.sc=z;
+
+    }
 
     public Student confirmStudent(){
-        System.out.println("\nPlease enter your name");
+        System.out.println("\nStudent Log in ");
+        sc.nextLine();
+        System.out.print("\nPlease enter your name: ");
         String name = sc.nextLine();
-        System.out.println("\nPlease enter your matric id");
+        System.out.print("Please enter your matric id: ");
         String id = sc.nextLine();
         return new Student(name, id);
     }
@@ -20,21 +27,23 @@ public class StudentView {
         System.out.println("[3] View Course");
         System.out.println("[4] Exit");
         System.out.print("\nChoice: ");
-        choice = sc.nextInt();
+        int choice = sc.nextInt();
         return choice;
     }
 
     public String showRegisterCourse(){
-        System.out.print("\nRegister course: ");
-        System.out.print("Enter course name: ");
+        System.out.println("\nRegister course: ");
+        sc.nextLine();
+        System.out.print("Enter course code: ");
         sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
     }
     
     public String showDeleteCourse(){
-        System.out.print("\nDelete course: ");
-        System.out.print("Enter course name: ");
+        System.out.println("\nDelete course: ");
+        sc.nextLine();
+        System.out.print("Enter course code: ");
         sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
@@ -63,7 +72,15 @@ public class StudentView {
 
     public void validateTrue(String n){
         System.out.println("Student " + n + " is selected");
+    }
 
+    public void displayStuCourse(ArrayList<Course> StuCList){
+        System.out.println("Your Course Registration List");
+        System.out.printf("\n%-30s%-10s%-7s%-7s\n","Course Name","Code","Credit","Capity");
+        System.out.printf("%-30s%-10s%-7s%-7s\n","-----------","----","------","------");
+        for (int i=0;i<StuCList.size();i++){
+            System.out.printf("%-30s%-10s%-7s%-7s\n",StuCList.get(i).getName(),StuCList.get(i).getCode(),StuCList.get(i).getCredit(),StuCList.get(i).getSpace());
+        }
     }
 
 }
