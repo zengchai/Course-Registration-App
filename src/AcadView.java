@@ -78,7 +78,7 @@ public class AcadView {
 
     public Acad checkAcad(){
         System.out.println("\n\nLog in\n");
-        System.out.print("Enter Usename: ");
+        System.out.print("Enter Username: ");
         String u = sin.nextLine();
         System.out.print("Enter Staffid: ");
         String s = sin.nextLine();
