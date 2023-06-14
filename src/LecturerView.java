@@ -4,7 +4,7 @@ public class LecturerView {
     Scanner sc = new Scanner(System.in);
      int choice;
 
-    public String confirmLecturer(){
+    public String validateLecturer(){
         System.out.println("\nPlease enter your name");
         String name = sc.nextLine();
         return name;
