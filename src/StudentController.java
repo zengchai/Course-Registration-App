@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,12 +36,15 @@ public class StudentController {
             i = studentview.showstumenu(StudentList.get(index));
             switch (i){
             case 1: RegisterCourse();
+            studentview.requestProceed();
             break;
 
             case 2: removeCourse();
+            studentview.requestProceed();
             break;
 
             case 3: viewStuCourse();
+            studentview.requestProceed();
             break;
             }
         };
@@ -90,4 +94,14 @@ public class StudentController {
     public void viewStuCourse(){
         studentview.displayStuCourse(StudentList.get(index).getRegisterCourse());
     }    
+
+    public static void clrscr(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime();
+        } catch (IOException | InterruptedException ex) {}
+    }
 }

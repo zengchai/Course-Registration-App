@@ -1,51 +1,57 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LecturerController {
     
     private ArrayList<Lecturer> lecturerList ;
     private ArrayList<Course> courseList ;
-    private ArrayList<Course> lect = new ArrayList<Course>();
     private LecturerView lecturerView;
-    Lecturer l;
     private int index;
 
-    public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList) {
+    public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList, Scanner z) {
         this.lecturerList = lecturerList;
         this.courseList = courseList;
-        lecturerView= new LecturerView();
+        lecturerView= new LecturerView(z);
     }
 
-    /*public void createStudentList(){
-        lecturerList.add(lecturerList.createStudent());
-    }*/
-
-    /*public void validateStudent(StudentView studentView){
-        for (int i=0; i<lecturerList.size();i++ ){
-            String temp=lecturerView.confirmLecturer();
-            if(temp ==lecturerList.get(i).getName()){
-                index=i;
-                System.out.println(lecturerList.get(i).getName()+ " is selected");
+    public void LectControllerMenu(){
+        clrscr();
+        int choice = 0;
+        Lecturer lec = lecturerView.confirmLecturer();
+         for (int a = 0 ; a<lecturerList.size(); a++){
+            if(lec.getName().equals(lecturerList.get(a).getName())&&
+            lec.getLectID().equals(lecturerList.get(a).getLectID())) {
+                this.index=a;
+                lecturerView.validateTrue(lec.getName());
+                break;
             }
             else{
-                System.out.println("Lecturer name not found\n");
-                studentView.confirmStudent();
+                this.index = -1;
             }
-        }
-    }*/
+         }
 
-    public void LectControllerMenu(){
-        int choice = 0;
-        while(choice!=4){
-            choice = lecturerView.showlectmenu();
+         while(choice!=4 && index!=-1){
+            clrscr();
+            choice = lecturerView.showlectmenu(lecturerList.get(index));
 
             switch (choice){
-                case 1: chooseTeachingCourse(lecturerView);
+                case 1:  
+                clrscr();
+                this.chooseTeachingCourse(lecturerView);
+                lecturerView.requestProceed();
                 break;
 
-                case 2: removeTeachingCourse(lecturerView);
+                case 2: 
+                clrscr();
+                this.removeTeachingCourse(lecturerView);
+                lecturerView.requestProceed();
                 break;
 
-                case 3: viewSelectedTeachingCourse();
+                case 3: 
+                clrscr();
+                this.viewSelectedTeachingCourse();
+                lecturerView.requestProceed();
                 break;
 
             }
@@ -53,48 +59,75 @@ public class LecturerController {
     }
 
     public void chooseTeachingCourse(LecturerView lecturerView){
-        viewCourse();
+        lecturerView.displayTeachingCourse(courseList);
         String temp = lecturerView.showTeachingCourse();
-        //l = lecturerList.get(index);
-        for (int i =0;i<courseList.size();i++){
-            if(temp.equals(courseList.get(i).getName())){
-                Course course= new Course(courseList.get(i).getName(), courseList.get(i).getCode(), courseList.get(i).getCredit(), courseList.get(i).getSpace());
-                //l.getTeachingCourse().add(course);
-                lect.add(course);
-                //break; //to avoid always show register fail
+        boolean repeat = false;
+        boolean clash = false;
+
+        for(int i=0;i<lecturerList.get(index).getSelectedCourse().size();i++)
+        { 
+            if (temp.equals(lecturerList.get(index).getSelectedCourse().get(i).getCode()))
+            {
+                repeat = true;
+                lecturerView.displayRepeatTrue();
+            }
+        }
+
+        for(int i=0;i<lecturerList.get(index).getSelectedCourse().size();i++)
+        { 
+            if (!(lecturerList.get(index).getSelectedCourse().get(i).getLec().getName().equals(courseList.get(i).getLec().getName())))
+            {
+                clash = true;
+                lecturerView.displayClash();
+            }
+        }
+
+        if(repeat == false && clash == false){
+            for (int i =0;i<courseList.size();i++){
+                if(temp.equals(courseList.get(i).getCode())){
+                    lecturerList.get(index).getSelectedCourse().add(courseList.get(i)); //inside lect will have teached course
+                    courseList.get(i).setLec(lecturerList.get(index)); //set teaching lec name
+                    lecturerView.chooseSuccessful(temp);
                 
-            }
-            else if(temp.equals(courseList.get(i).getName())){
-                lecturerView.registerfail(temp);
+                }
+                else{
+                    lecturerView.registerfail(temp);
 
+                }
             }
-
         }
     }   
 
     public void removeTeachingCourse(LecturerView lecturerView){
         viewSelectedTeachingCourse();
         String temp = lecturerView.showDeleteTeachingCourse();
-        //Lecturer l = lecturerList.get(index);
+
         for (int i =0;i<courseList.size();i++){ 
-            if(temp.equals(courseList.get(i).getName())){
-                lect.remove(i);
-                
+            if(temp.equals(courseList.get(i).getCode())){
+                lecturerList.get(index).getSelectedCourse().remove(courseList.get(i));
+                lecturerView.removeSuccessful(temp);
+
             }
             else{
                 lecturerView.removefail(temp);
-                
             }
         }   
     }
 
     public void viewSelectedTeachingCourse(){
-        
-        lecturerView.displayTeachingCourse(lect);
+        lecturerView.displayTeachingCourse(lecturerList.get(index).getSelectedCourse());
 
     } 
 
-    public void viewCourse(){
-        lecturerView.displayCourseList(courseList);
-    } 
+    public static void clrscr(){
+        //Clears Screen in java
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime();
+            } catch (IOException | InterruptedException ex) {}
+        }
+
 }
+

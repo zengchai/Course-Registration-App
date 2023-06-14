@@ -41,6 +41,10 @@ public class Course {
         return lec;
     }
 
+    public void setLec(Lecturer l) {
+        this.lec = l;
+    }
+
     public ArrayList<Student> getStuList(){
         return stuList;
     }
