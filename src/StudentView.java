@@ -27,6 +27,7 @@ public class StudentView {
     public String showRegisterCourse(){
         System.out.println("\nRegister course: ");
         System.out.println("Enter course name: ");
+        sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
     }
