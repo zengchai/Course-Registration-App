@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AcadView {
-    Scanner sin = new Scanner(System.in);
+    Scanner sin;
+
+    public AcadView(Scanner sc){
+        this.sin = sc;
+    }
 
     public void createdCourse(String code){
         System.out.println("\nCourse "+ code +" has been created successfully!");
@@ -77,7 +81,8 @@ public class AcadView {
     }
 
     public Acad checkAcad(){
-        System.out.println("\n\nLog in\n");
+        System.out.print("Log in\n");
+        sin.nextLine();
         System.out.print("Enter Username: ");
         String u = sin.nextLine();
         System.out.print("Enter Staffid: ");
