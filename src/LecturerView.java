@@ -4,30 +4,17 @@ public class LecturerView {
     Scanner sc = new Scanner(System.in);
      int choice;
 
-<<<<<<< HEAD
-    public String validateLecturer(){
-=======
-    /*public Student createLecturer(){
-        System.out.println("\n\nNew Student");
-        System.out.println("\nStudent personal Information ");
-        System.out.print("Name: ");
-        String n = sc.nextLine();
-        System.out.print("Matric ID: ");
-        String id = sc.nextLine();
-        Student stu = new Student(n,id);
-        return stu;   
-    }*/
-
-    public String confirmLecturer(){
->>>>>>> main
+    public Lecturer confirmLecturer(){
         System.out.println("\nPlease enter your name");
         String name = sc.nextLine();
-        return name;
+        System.out.println("\nPlease enter your name");
+        String lectId = sc.nextLine();
+        return new Lecturer(name, lectId);
     }
 
-    public int showlectmenu(){
+    public int showlectmenu(Lecturer lecturer){
         do{
-            System.out.println("\n\nWelcome to the course registration system, ");
+            System.out.println("\n\nWelcome to the course registration system, " + lecturer.getName());
             System.out.println("\nKindly select the activity");
             System.out.println("[1] Select Course to teach");
             System.out.println("[2] Delete Teaching Course");
