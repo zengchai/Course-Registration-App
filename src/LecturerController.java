@@ -6,8 +6,6 @@ public class LecturerController {
     private ArrayList<Course> courseList ;
     private ArrayList<Course> lect = new ArrayList<Course>();
     private LecturerView lecturerView;
-    //Lecturer l;
-    //private int index;
 
     public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList) {
         this.lecturerList = lecturerList;
