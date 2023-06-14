@@ -2,31 +2,27 @@ import java.util.ArrayList;
 
 public class Lecturer {
     private Staff lec;
-    private ArrayList<Course> teachingCourse;
-   private int courseCount;
+    private ArrayList<Course> selectedCourse;
     
+    public Lecturer() {
+        lec = new Staff();
+    }
+
     public Lecturer(String name,String lecid) {
         this.lec = new Staff(name, lecid);
-        this.teachingCourse = new ArrayList<Course>();
-        courseCount=teachingCourse.size();
+        this.selectedCourse = new ArrayList<Course>();
     }
-    /*public void setCours(Course cours) {
-        this.cours = cours;
-    }*/
+
     public String getName() {
-        return lec.getName();
-    }
-    public Lecturer() {
-        this.lec = new Staff();
+        return lec.name;
     }
 
-    public int getCourseCount() {
-        return courseCount;
-    }
-    
-    public ArrayList<Course> getTeachingCourse() {
-        return teachingCourse;
+    public String getLectID() {
+        return lec.staffId;
     }
 
+    public ArrayList<Course> getSelectedCourse() {
+        return selectedCourse;
+    }
 }
 

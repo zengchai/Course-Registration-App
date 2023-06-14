@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +18,7 @@ public class StudentController {
     public void StuControllerMenu(){
 
         int i =0;
-
+        clrscr();
         Student stu = studentview.confirmStudent();
          for (int a = 0 ; a<StudentList.size(); a++){
             if(stu.getName().equals(StudentList.get(a).getName())&&
@@ -32,18 +33,34 @@ public class StudentController {
          }
 
         while(i!=4 && index!=-1){
+            clrscr();
             i = studentview.showstumenu(StudentList.get(index));
             switch (i){
-            case 1: RegisterCourse();
+            case 1: 
+            clrscr();
+            RegisterCourse();
+            studentview.requestProceed();
             break;
 
-            case 2: removeCourse();
+            case 2: 
+            clrscr();
+            viewStuCourse();
+            removeCourse();
+            studentview.requestProceed();
             break;
 
-            case 3: viewStuCourse();
+            case 3: 
+            clrscr();
+            viewStuCourse();
+            studentview.requestProceed();
             break;
             }
         };
+
+        if(index==-1){
+            studentview.errorMessage();
+            studentview.requestProceed();
+        }
         
     }
 
@@ -80,6 +97,7 @@ public class StudentController {
             if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().remove(i);
                 CourseList.get(i).setSpace((CourseList.get(i).getSpace()+1));
+                studentview.removesuccess();
             }
             else{
                 studentview.removefail(temp);
@@ -90,4 +108,14 @@ public class StudentController {
     public void viewStuCourse(){
         studentview.displayStuCourse(StudentList.get(index).getRegisterCourse());
     }    
+
+    public static void clrscr(){
+    //Clears Screen in java
+    try {
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime();
+        } catch (IOException | InterruptedException ex) {}
+    }
 }
