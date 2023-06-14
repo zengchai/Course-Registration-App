@@ -19,6 +19,7 @@ public class App {
         System.out.println("[3] Exit");
         System.out.print("\nNumber: ");
     }
+    
     public static void main(String[] args) throws Exception {
         ArrayList <Course> courseList = new ArrayList<>();
         ArrayList <Acad> acadList = new ArrayList<>();
