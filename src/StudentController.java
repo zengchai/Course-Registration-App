@@ -32,8 +32,10 @@ public class StudentController {
         while(i!=4 && index!=-1){
             i = studentview.showstumenu(StudentList.get(index));
             switch (i){
-            case 1: RegisterCourse(studentview);
-            break;
+            case 1: {RegisterCourse(studentview);
+                    studentview.displayCourseList(CourseList);
+                    break;
+                    }
 
             case 2: removeCourse(studentview);
             break;
