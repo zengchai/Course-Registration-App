@@ -29,14 +29,9 @@ public class App {
         ArrayList <Lecturer> lecList = new ArrayList<>();
         ArrayList <Student> stuList = new ArrayList<>();
         Scanner z = new Scanner(System.in);
-<<<<<<< HEAD
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList, stuList, lecList,z);
-=======
-        acadList.add(new Acad("AA", "ID","pass1"));
-        AController aController = new AController(acadList, courseList, stuList, lecList);
->>>>>>> ec823dfafaf2e6150256e585c5851b93afa2b9a8
         StudentController stuController = new StudentController(stuList,courseList,z);
 
         Lecturer l = new Lecturer("Abdullah", "S33W1");

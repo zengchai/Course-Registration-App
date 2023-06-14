@@ -67,7 +67,7 @@ public class AcadView {
     }
     
     public int showAcadMenu(Acad acad){
-        System.out.println("\n\nWelcome to the course registration system, " + acad.getAca().getName());
+        System.out.println("Welcome to the course registration system, " + acad.getAca().getName());
         System.out.println("\nKindly select the activity:");
         System.out.println("[1] Create Course");
         System.out.println("[2] Remove Course");
