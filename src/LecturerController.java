@@ -30,7 +30,7 @@ public class LecturerController {
             }
          }
 
-         while(choice!=4 && choice!=-1){
+         while(choice!=4 && index!=-1){
             choice = lecturerView.showlectmenu(lecturerList.get(index));
 
             switch (choice){

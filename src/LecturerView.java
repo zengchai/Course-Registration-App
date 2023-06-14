@@ -68,8 +68,8 @@ public class LecturerView {
 
     public void displayTeachingCourse(ArrayList<Course> c){ //show available course to teach
         System.out.println("\nSelected Teaching Course List");
-        System.out.printf("\n%-30s%-10s%-7s%-7s\n","Course Name","Code","Credit","Capity");
-        System.out.printf("%-30s%-10s%-7s%-7s\n","-----------","----","------","------");
+        System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Lecturer","Credit","Capity");
+        System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","--------","------","------");
         for (int i=0;i<c.size();i++){
             System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
         }
@@ -77,8 +77,8 @@ public class LecturerView {
 
     public void displayCourseList(ArrayList<Course> c){ //show available course to teach
         System.out.println("\nAvailable Course List");
-        System.out.printf("\n%-30s%-10s%-7s%-7s\n","Course Name","Code","Credit","Capity");
-        System.out.printf("%-30s%-10s%-7s%-7s\n","-----------","----","------","------");
+        System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Lecturer","Credit","Capity");
+        System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","--------","------","------");
         for (int i=0;i<c.size();i++){
             System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
         }
