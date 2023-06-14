@@ -36,12 +36,12 @@ public class AcadView {
         int x = sin.nextInt();
         System.out.printf("%-8s%-2s","Capacity",":");
         int a = sin.nextInt();
+        sin.nextLine();
         this.createdCourse(w);
         return new Course(z,w,x,a);
     }
 
     public void requestProceed(){
-        sin.nextLine();
         System.out.print("\nKindly enter any number to proceed: ");
         String z = sin.nextLine();
     }
@@ -54,6 +54,7 @@ public class AcadView {
         for (int i=0;i<c.size();i++){
             System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",c.get(i).getName(),c.get(i).getCode(),c.get(i).getLec().getName(),c.get(i).getCredit(),c.get(i).getSpace());
         }
+        sin.nextLine();
     }
 
     public String displayRemoveCourse(ArrayList<Course> c){
@@ -108,6 +109,7 @@ public class AcadView {
     public Lecturer createLecturer(){
         System.out.println("Adding Lecturer");
         System.out.println("\nLecturer personal Information ");
+        sin.nextLine();
         System.out.printf("%-10s%-2s","Name",":");
         String z = sin.nextLine();
         System.out.printf("%-10s%-2s","Staff ID",":");
@@ -115,5 +117,9 @@ public class AcadView {
         this.addedLecturer(w);
         Lecturer stu = new Lecturer(z,w);
         return stu;   
+    }
+
+    public void errorMessage(){
+        System.out.println("\nThe information is incorrect. Please log in again.");
     }
 }

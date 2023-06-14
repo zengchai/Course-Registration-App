@@ -73,6 +73,11 @@ public class AController {
                 acadView.requestProceed();
             }
         };
+        
+        if(index==-1){
+            acadView.errorMessage();
+            acadView.requestProceed();
+        }
     }
 
     public void creatCourse(){
