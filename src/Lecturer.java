@@ -1,6 +1,9 @@
 public class Lecturer {
     private Staff lec;
     
+    public Lecturer() {
+    }
+
     public Lecturer(String name,String lecid) {
         this.lec = new Staff(name, lecid);
     }

@@ -22,9 +22,8 @@ public class App {
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList, stuList, lecList);
         StudentController stuController = new StudentController(stuList,courseList);
-
-        Lecturer l = new Lecturer("Abdullah", "S33W1");
-        lecList.add(l);
+        //Lecturer l = new Lecturer("Abdullah", "S33W1");
+        //lecList.add(l);
         LecturerController lectController = new LecturerController(lecList,courseList); 
 
         Scanner z = new Scanner(System.in);

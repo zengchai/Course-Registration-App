@@ -4,10 +4,31 @@ public class LecturerView {
     Scanner sc = new Scanner(System.in);
      int choice;
 
+    public void removeSuccessful(String code){
+        System.out.println("\nTeaching course "+ code +" has been removed successfully!");
+    }
+
+    public void chooseSuccessful(String code){
+        System.out.println("\nTeaching course "+ code +" has been selected successfully!");
+    }
+
+    public void removefail(String n){
+        System.out.println(n + " is not a valid course code");
+    }
+
+    public void registerfail(String n){
+        System.out.println(n + " is not a valid course code");
+    }
+
+    public void validateTrue(String n){
+        System.out.println("Lecturer " + n + " is selected");
+
+    }
+
     public Lecturer confirmLecturer(){
         System.out.println("\nPlease enter your name");
         String name = sc.nextLine();
-        System.out.println("\nPlease enter your name");
+        System.out.println("\nPlease enter your lecturer ID");
         String lectId = sc.nextLine();
         return new Lecturer(name, lectId);
     }
@@ -30,27 +51,19 @@ public class LecturerView {
 
         System.out.println("\nChoose teaching course: ");
         sc.nextLine(); //
-        System.out.print("Enter course name: ");
-        String Cname=sc.nextLine();
+        System.out.print("Enter course code: ");
+        String Ccode=sc.nextLine();
         System.out.println();
-        return Cname;
+        return Ccode;
     }
     
     public String showDeleteTeachingCourse(){ //Delete teaching course
         System.out.println("\nDelete teaching course: ");
         sc.nextLine(); //
-        System.out.print("Enter course name: ");
-        String Cname=sc.nextLine();
+        System.out.print("Enter course code: ");
+        String Ccode=sc.nextLine();
         System.out.println();
-        return Cname;
-    }
-
-    public void removefail(String n){
-        System.out.println(n + " is not a valid course name");
-    }
-
-    public void registerfail(String n){
-        System.out.println(n + " is not a valid course name");
+        return Ccode;
     }
 
     public void displayTeachingCourse(ArrayList<Course> c){ //show available course to teach
