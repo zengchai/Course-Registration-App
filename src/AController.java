@@ -57,7 +57,7 @@ public class AController {
     }
 
     public void viewCourse(){
-        acadView.displayCourseList(courseList);
+        acadView.displayCourseList(courseList);        
     }
 
     public void removeCourse(){
