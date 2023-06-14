@@ -30,7 +30,7 @@ public class AController {
                 this.index = -1;
             }
         }
-        while(i!=5 && index!=-1){
+        while(i!=6 && index!=-1){
             i = acadView.showAcadMenu(acadList.get(index));
             if(i == 1){
                 this.creatCourse();
@@ -44,6 +44,9 @@ public class AController {
             }
             if(i == 4){
                 this.createStudentList();
+            }
+            if(i == 5){
+                this.createLectureList();
             }
         };
     }
