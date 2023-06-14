@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Course {
 
     protected String name;
@@ -5,6 +7,7 @@ public class Course {
     protected int credit;
     protected int space;
     protected Lecturer lec;
+    protected ArrayList<Student> stuList;
 
     public Course(){
     }
@@ -15,46 +18,31 @@ public class Course {
         this.credit = c;
         this.space = s;
         this.lec = new Lecturer();
+        this.stuList = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getCredit() {
         return credit;
-    }
-
-    public void setCredit(int credit) {
-        this.credit = credit;
     }
 
     public int getSpace() {
         return space;
     }
 
-    public void setSpace(int space) {
-        this.space = space;
-    }
-
     public String getCode() {
         return code;
-    }
-    
-    public void setCode(String code) {
-        this.code = code;
     }
     
     public Lecturer getLec() {
         return lec;
     }
 
-    public void setLec(Lecturer lec) {
-        this.lec = lec;
+    public ArrayList<Student> getStuList(){
+        return stuList;
     }
 
 
