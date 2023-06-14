@@ -17,17 +17,17 @@ public class App {
         ArrayList <Acad> acadList = new ArrayList<>();
         ArrayList <Lecturer> lecList = new ArrayList<>();
         ArrayList <Student> stuList = new ArrayList<>();
-        
+        Scanner z = new Scanner(System.in);
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList, stuList, lecList);
-        StudentController stuController = new StudentController(stuList,courseList);
+        StudentController stuController = new StudentController(stuList,courseList,z);
 
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         lecList.add(l);
+
         LecturerController lectController = new LecturerController(lecList,courseList); 
 
-        Scanner z = new Scanner(System.in);
         int w;
         do{
         showmenu();

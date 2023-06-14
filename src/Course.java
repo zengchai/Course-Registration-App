@@ -45,5 +45,9 @@ public class Course {
         return stuList;
     }
 
+    public void setSpace(int space) {
+        this.space = space;
+    }
+
 
 }

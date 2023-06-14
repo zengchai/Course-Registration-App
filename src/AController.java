@@ -9,11 +9,6 @@ public class AController {
     ArrayList<Student> stuList;
     AcadView acadView;
 
-    public class CLS {
-    public static void main(String... arg) throws IOException, InterruptedException {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-    }
-}
     public AController(ArrayList<Acad> acadList, ArrayList<Course> courseList,ArrayList<Student> stuList, ArrayList<Lecturer> lecList) {
         this.acadList = acadList;
         this.courseList = courseList;
@@ -24,7 +19,6 @@ public class AController {
 
     public void displayMenu(){
         int i = 0;
-        this.clearScreen();
         Acad z = acadView.checkAcad();
         for (int a = 0 ; a<acadList.size(); a++){
             if((z.getAca().getName().equals(acadList.get(a).getAca().getName())) &&
