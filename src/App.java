@@ -13,7 +13,6 @@ public class App {
     }
 <<<<<<< HEAD
 =======
-
     public static void showstumenu(Student s){
         System.out.println("\n\nWelcome to the course registration system, " + s.getName());
         System.out.println("\nKindly select the activity");
@@ -24,8 +23,7 @@ public class App {
         System.out.print("\nNumber: ");
     }
     
-
->>>>>>> 60bfcb9fe44ab4068718dc8711f7eef32e3b9bf2
+>>>>>>> lazyyam
     public static void showlecmenu(Lecturer l){
         System.out.println("\n\nWelcome to the course registration system, " + l.getName());
         System.out.println("\nKindly select the activity");
@@ -41,14 +39,16 @@ public class App {
         ArrayList <Student> stuList = new ArrayList<>();
         acadList.add(new Acad("Admin A", "S23A1","pass1"));
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
-        AController aController = new AController(acadList, courseList, stuList, lecList);
+        AController aController = new AController(acadList, courseList, stuList);
         StudentController stuController = new StudentController(stuList,courseList);
         
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         lecList.add(l);
         LecturerController lectController = new LecturerController(lecList,courseList); /***** */
+
+        Student s = new Student("Loy", "A21ES0223");
         Scanner z = new Scanner(System.in);
-        int w;
+        int w,y,yss;
         do{
         showmenu();
         w = z.nextInt();
@@ -59,6 +59,17 @@ public class App {
             aController.displayMenu();
         }
         if(w==3){
+            /*do{
+            showlecmenu(l);
+            yss = z.nextInt();
+            if(yss == 1){
+                System.out.print("\nEnter the course code that you want to select:");
+                z.nextLine();
+                String d = z.nextLine();
+            }
+            if(yss == 2){
+            }}while(yss!=3);*/
+
             lectController.LectControllerMenu();
             
         }
