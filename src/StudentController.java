@@ -48,27 +48,38 @@ public class StudentController {
     }
 
     public void RegisterCourse(){
+        boolean repeat = false;
+
         studentview.displayCourseList(CourseList);
         String temp=studentview.showRegisterCourse();
-        for (int i =0;i<CourseList.size();i++){
-            if(temp.equals(CourseList.get(i).getCode())){
-                StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
-                CourseList.get(i).getStuList().add(StudentList.get(index));
-                studentview.registersuccess();
-                CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
-            }
-            else{
-                studentview.registerfail(temp);
+        for(int i=0;i<StudentList.get(index).getRegisterCourse().size();i++)
+        { if (temp.equals(StudentList.get(index).getRegisterCourse().get(i).getCode()))
+            {repeat = true;
+            studentview.displayRepeatTrue();
             }
         }
-    }   
+        if(repeat == false){
+            for (int i =0;i<CourseList.size();i++){
+                if(temp.equals(CourseList.get(i).getCode())){
+                    StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
+                    CourseList.get(i).getStuList().add(StudentList.get(index));
+                    studentview.registersuccess();
+                    CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
+                }
+                else{
+                    studentview.registerfail(temp);
+                }
+            }
+        }
+    }
+   
 
     public void removeCourse(){
         String temp=studentview.showDeleteCourse();
         for (int i =0;i<CourseList.size();i++){ 
             if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().remove(i);
-                CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
+                CourseList.get(i).setSpace((CourseList.get(i).getSpace()+1));
             }
             else{
                 studentview.removefail(temp);
