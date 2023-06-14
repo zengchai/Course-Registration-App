@@ -35,7 +35,6 @@ public class StudentView {
         System.out.println("\nRegister course: ");
         sc.nextLine();
         System.out.print("Enter course code: ");
-        sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
     }
@@ -44,7 +43,6 @@ public class StudentView {
         System.out.println("\nDelete course: ");
         sc.nextLine();
         System.out.print("Enter course code: ");
-        sc.nextLine();
         String Cname=sc.nextLine();
         return Cname;
     }
@@ -81,6 +79,16 @@ public class StudentView {
         for (int i=0;i<StuCList.size();i++){
             System.out.printf("%-30s%-10s%-7s%-7s\n",StuCList.get(i).getName(),StuCList.get(i).getCode(),StuCList.get(i).getCredit(),StuCList.get(i).getSpace());
         }
+    }
+
+    public void displayRepeatTrue(){
+        System.out.println("Repeated Course Code Registration");
+    }
+
+    public void requestProceed(){
+        sc.nextLine();
+        System.out.print("\nKindly enter any number to proceed: ");
+        String z = sc.nextLine();
     }
 
 }
