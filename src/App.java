@@ -11,7 +11,14 @@ public class App {
         System.out.println("[4] Exit");
         System.out.print("\nNumber: ");
     }
-    
+    public static void showlecmenu(Lecturer l){
+        System.out.println("\n\nWelcome to the course registration system, " + l.getName());
+        System.out.println("\nKindly select the activity");
+        System.out.println("[1] Select Course to teach");
+        System.out.println("[2] View Course");
+        System.out.println("[3] Exit");
+        System.out.print("\nNumber: ");
+    }
     public static void main(String[] args) throws Exception {
         ArrayList <Course> courseList = new ArrayList<>();
         ArrayList <Acad> acadList = new ArrayList<>();
