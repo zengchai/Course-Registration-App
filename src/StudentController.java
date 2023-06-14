@@ -47,7 +47,7 @@ public class StudentController {
     public void RegisterCourse(StudentView studentView){
         String temp=studentView.showRegisterCourse();
         for (int i =0;i<CourseList.size();i++){
-            if(temp.equals(CourseList.get(i).getName())){
+            if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
                 studentview.registersuccess();
             }
@@ -60,7 +60,7 @@ public class StudentController {
     public void removeCourse(StudentView studentView){
         String temp=studentView.showDeleteCourse();
         for (int i =0;i<CourseList.size();i++){ 
-            if(temp.equals(CourseList.get(i).getName())){
+            if(temp.equals(CourseList.get(i).getCode())){
                 StudentList.get(index).getRegisterCourse().remove(i);
             }
             else{
