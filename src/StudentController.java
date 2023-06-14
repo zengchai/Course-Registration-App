@@ -42,6 +42,7 @@ public class StudentController {
             break;
             }
         };
+        
     }
 
     public void RegisterCourse(StudentView studentView){
