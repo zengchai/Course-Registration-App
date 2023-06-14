@@ -22,7 +22,7 @@ public class App {
         acadList.add(new Acad("Admin B", "S23A2","pass2"));
         AController aController = new AController(acadList, courseList, stuList);
         StudentController stuController = new StudentController(stuList,courseList);
-        1
+
         Lecturer l = new Lecturer("Abdullah", "S33W1");
         lecList.add(l);
         LecturerController lectController = new LecturerController(lecList,courseList); /***** */
@@ -41,17 +41,7 @@ public class App {
             aController.displayMenu();
         }
         if(w==3){
-            /*do{
-            showlecmenu(l);
-            yss = z.nextInt();
-            if(yss == 1){
-                System.out.print("\nEnter the course code that you want to select:");
-                z.nextLine();
-                String d = z.nextLine();
-            }
-            if(yss == 2){
-            }}while(yss!=3);*/
-
+           
             lectController.LectControllerMenu();
             
         }
