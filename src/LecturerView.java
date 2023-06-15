@@ -10,11 +10,11 @@ public class LecturerView {
     }
 
     public void removeSuccessful(String code){
-        System.out.println("\nTeaching course "+ code +" has been removed successfully!");
+        System.out.println("Teaching course "+ code +" has been removed successfully!");
     }
 
     public void chooseSuccessful(String code){
-        System.out.println("\nTeaching course "+ code +" has been selected successfully!");
+        System.out.println("Teaching course "+ code +" has been selected successfully!");
     }
 
     public void removefail(String n){
@@ -57,7 +57,7 @@ public class LecturerView {
     public String showTeachingCourse(){ //Choose teaching course
 
         System.out.println("\nChoose teaching course: ");
-        sc.nextLine(); //
+        sc.nextLine();
         System.out.print("Enter course code: ");
         String Ccode=sc.nextLine();
         System.out.println();
