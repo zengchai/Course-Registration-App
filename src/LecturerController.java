@@ -70,7 +70,6 @@ public class LecturerController {
         boolean repeat = false;
         boolean clash = false;
         int z = 0;
-        int r = 0;
         
             for(int i=0;i<courseList.size();i++)
             {  
@@ -78,35 +77,20 @@ public class LecturerController {
                 {
                     if (!courseList.get(i).getLec().getName().equals(""))
                     {
-                        if (lecturerList.get(index).getSelectedCourse().size()==0)
+                        for(int s=0;s<lecturerList.get(index).getSelectedCourse().size();s++)
                         { 
-                            clash = true;
-                            lecturerView.displayClash();
-                            r = 0;
-                            break;
-                            
-                        }
+                            if (temp.equals(lecturerList.get(index).getSelectedCourse().get(s).getCode()))
+                            {
+                                repeat = true;
+                                break;
+                            }
                     }
+                    clash = true;
                 }
-                else
-                {
-                    r = 1;
-                }
-            }
-            if (r == 1)
-            {
-                for(int s=0;s<lecturerList.get(index).getSelectedCourse().size();s++)
-                    { 
-                        if (temp.equals(lecturerList.get(index).getSelectedCourse().get(s).getCode()))
-                        {
-                            repeat = true;
-                            lecturerView.displayRepeatTrue();
-                            break;
-                        }
-                    }  
-            }
             
-                
+            }}
+            
+        
 
         
 
@@ -126,6 +110,12 @@ public class LecturerController {
             if(z==1){
                 lecturerView.registerfail(temp);
             }
+        }
+        else if(repeat == true){
+            lecturerView.displayRepeatTrue();
+        }
+        else if(clash == true){
+            lecturerView.displayClash();
         }
     }   
 
