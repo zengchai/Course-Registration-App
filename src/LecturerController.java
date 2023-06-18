@@ -83,7 +83,6 @@ public class LecturerController {
                             lecturerView.displayClash();
                             r = 0;
                             break;
-                            
                         }
                     }
                 }
