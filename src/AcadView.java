@@ -27,18 +27,36 @@ public class AcadView {
     public Course displaycreatCourse(){
         System.out.println("Creating Course");
         System.out.println("\nCourse Details");
+        String x,a;
+        int xi=0,ai=0;
+        boolean bool = false;
         sin.nextLine();
         System.out.printf("%-8s%-2s","Name",":");
         String z = sin.nextLine();
         System.out.printf("%-8s%-2s","Code",":");
         String w = sin.nextLine();
-        System.out.printf("%-8s%-2s","Credit",":");
-        int x = sin.nextInt();
-        System.out.printf("%-8s%-2s","Capacity",":");
-        int a = sin.nextInt();
-        sin.nextLine();
+        do{
+            try{
+                System.out.printf("%-8s%-2s","Credit",":");
+                x = sin.nextLine();
+                xi = Integer.parseInt(x);
+                bool=false;}
+            catch (NumberFormatException e){
+                System.out.println("Wrong format! The data must be in integers.");
+                bool=true;
+            }}while(bool == true);
+        do{
+            try{
+                System.out.printf("%-8s%-2s","Capacity",":");
+                a = sin.nextLine();
+                ai = Integer.parseInt(a);
+                bool=false;}
+            catch (NumberFormatException e){
+                System.out.println("Wrong format! The data must be in integers.");
+                bool=true;
+            }}while(bool == true);
         this.createdCourse(w);
-        return new Course(z,w,x,a);
+        return new Course(z,w,xi,ai);
     }
 
     public void requestProceed(){
@@ -63,19 +81,14 @@ public class AcadView {
         //sin.nextLine();
         System.out.print("\nEnter the code that you want to remove: ");
         String z = sin.nextLine();
-        this.removedCourse(z);
         return z;
     }
     
     public int showAcadMenu(Acad acad){
         System.out.println("Welcome to the course registration system, " + acad.getAca().getName());
         System.out.println("\nKindly select the activity:");
-        System.out.println("[1] Create Course");
-        System.out.println("[2] Remove Course");
-        System.out.println("[3] View Course List");
-        System.out.println("[4] Add Student");
-        System.out.println("[5] Add Lecturer");
-        System.out.println("[6] Exit");
+        System.out.println("[1] Create Course\n[2] Remove Course\n[3] View Course List\n[4] Add Student");
+        System.out.println("[5] View Student List\n[6] Add Lecturer\n[7] Exit");
         System.out.print("\nNumber: ");
         int s = sin.nextInt();
         return s;
@@ -122,4 +135,22 @@ public class AcadView {
     public void errorMessage(){
         System.out.println("\nThe information is incorrect. Please log in again.");
     }
+
+    public void displayStu(ArrayList <Student> S){
+        System.out.println("Student List");
+        for (int i=0;i<S.size();i++){
+        System.out.println("\nStudent " + (i+1));
+        System.out.println("\nName       : " + S.get(i).getName());
+        System.out.println("Matric ID  : " + S.get(i).getMatricid());
+        System.out.println("Course List:");
+        System.out.printf("\n%-20s%-13s%-15s%-7s%-7s\n","Course Name","Code","Lecturer","Credit","Capity");
+        System.out.printf("%-20s%-13s%-15s%-7s%-7s\n","-----------","----","--------","------","------");
+        for (int z=0;z<S.get(i).getRegisterCourse().size();z++){
+            System.out.printf("%-20s%-13s%-15s%-7s%-7s\n",S.get(i).getRegisterCourse().get(z).getName(),
+            S.get(i).getRegisterCourse().get(z).getCode(),S.get(i).getRegisterCourse().get(z).getLec().getName(),
+            S.get(i).getRegisterCourse().get(z).getCredit(),S.get(i).getRegisterCourse().get(z).getSpace());
+        }
+    }
+        sin.nextLine();}
+    
 }

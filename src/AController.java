@@ -44,7 +44,7 @@ public class AController {
             }
         }
         
-        while(i!=6 && index!=-1){
+        while(i!=7 && index!=-1){
             clrscr();
             i = acadView.showAcadMenu(acadList.get(index));
             if(i == 1){
@@ -68,6 +68,11 @@ public class AController {
                 acadView.requestProceed();
             }
             if(i == 5){
+                clrscr();
+                this.displayStuList();
+                acadView.requestProceed();
+            }
+            if(i == 6){
                 clrscr();
                 this.createLectureList();
                 acadView.requestProceed();
@@ -94,6 +99,7 @@ public class AController {
         for (int i=0;i<courseList.size();i++){
             if(s.equals(courseList.get(i).getCode())){
                 courseList.remove(i);
+                acadView.removedCourse(s);
             }
         }
     }
@@ -104,5 +110,9 @@ public class AController {
 
     public void createLectureList(){
         this.lecList.add(acadView.createLecturer());
+    }
+
+    public void displayStuList(){
+        this.acadView.displayStu(stuList);
     }
 }
