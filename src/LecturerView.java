@@ -42,7 +42,7 @@ public class LecturerView {
 
     public int showlectmenu(Lecturer lecturer){
         do{
-            System.out.println("\nWelcome to the course registration system, " + lecturer.getName());
+            System.out.println("Welcome to the course registration system, " + lecturer.getName());
             System.out.println("\nKindly select the activity");
             System.out.println("[1] Select Course to teach");
             System.out.println("[2] Delete Teaching Course");
@@ -55,9 +55,8 @@ public class LecturerView {
     }
 
     public String showTeachingCourse(){ //Choose teaching course
-
-        System.out.println("\nChoose teaching course: ");
         sc.nextLine();
+        System.out.println("\nChoose teaching course: ");
         System.out.print("Enter course code: ");
         String Ccode=sc.nextLine();
         System.out.println();
@@ -65,8 +64,8 @@ public class LecturerView {
     }
     
     public String showDeleteTeachingCourse(){ //Delete teaching course
+        sc.nextLine();
         System.out.println("\nDelete teaching course: ");
-        sc.nextLine(); //
         System.out.print("Enter course code: ");
         String Ccode=sc.nextLine();
         System.out.println();
@@ -100,8 +99,21 @@ public class LecturerView {
     }
 
     public void requestProceed(){
-        sc.nextLine();
         System.out.print("\nKindly enter any number to proceed: ");
         String z = sc.nextLine();
+    }
+
+    public void requestProceed2(){
+        String i = sc.nextLine();
+        System.out.print("\nKindly enter any number to proceed: ");
+        String z = sc.nextLine();
+    }
+
+    public void errorMessage(){
+        System.out.println("\nThe information is incorrect. Please log in again.");
+    }
+
+    public void errorCode(){
+        System.out.println("\nPlease enter the corret course code.");
     }
 }

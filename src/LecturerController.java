@@ -21,8 +21,8 @@ public class LecturerController {
         Lecturer lec = lecturerView.confirmLecturer();
 
          for (int a = 0 ; a<lecturerList.size(); a++){
-            if(lec.getName().equals(lecturerList.get(a).getName())&&
-            lec.getLectID().equals(lecturerList.get(a).getLectID())) {
+            if(lec.getLect().getName().equals(lecturerList.get(a).getLect().getName())&&
+            lec.getLect().getstaffId().equals(lecturerList.get(a).getLect().getstaffId())) {
                 this.index=a;
                 lecturerView.validateTrue(lec.getName());
                 break;
@@ -30,6 +30,11 @@ public class LecturerController {
             else{
                 this.index = -1;
             }
+         }
+         if(index == -1)
+         {
+            lecturerView.errorMessage();
+            lecturerView.requestProceed();
          }
 
          while(choice!=4 && index!=-1){
@@ -52,9 +57,8 @@ public class LecturerController {
                 case 3: 
                 clrscr();
                 this.viewSelectedTeachingCourse();
-                lecturerView.requestProceed();
+                lecturerView.requestProceed2();
                 break;
-
             }
         }
     }
@@ -65,31 +69,43 @@ public class LecturerController {
         boolean repeat = false;
         boolean clash = false;
         int z = 0;
-
-        for(int i=0;i<courseList.size();i++)
-        {   
-            if (temp.equals(courseList.get(i).getCode()))
-            {
-                if (!courseList.get(i).getLec().getName().equals(""))
+        int r = 0;
+        
+            for(int i=0;i<courseList.size();i++)
+            {  
+                if (temp.equals(courseList.get(i).getCode()))
                 {
-                    clash = true;
-                    lecturerView.displayClash();
-                    break;
+                    if (!courseList.get(i).getLec().getName().equals(""))
+                    {
+                        if (lecturerList.get(index).getSelectedCourse().size()==0)
+                        { 
+                            clash = true;
+                            lecturerView.displayClash();
+                            r = 0;
+                            break;
+                            
+                        }
+                    }
                 }
-
+                else
+                {
+                    r = 1;
+                }
+            }
+            if (r == 1)
+            {
+                for(int s=0;s<lecturerList.get(index).getSelectedCourse().size();s++)
+                    { 
+                        if (temp.equals(lecturerList.get(index).getSelectedCourse().get(s).getCode()))
+                        {
+                            repeat = true;
+                            lecturerView.displayRepeatTrue();
+                            break;
+                        }
+                    }  
+            }
+            
                 
-        }
-        }
-
-        // If the lecture teach the same course
-        // for(int s=0;s<lecturerList.get(index).getSelectedCourse().size();s++)
-        //     { 
-        //         if (temp.equals(lecturerList.get(index).getSelectedCourse().get(s).getCode()))
-        //         {
-        //             repeat = true;
-        //             lecturerView.displayRepeatTrue();
-        //         }
-        //     }
 
         
 
