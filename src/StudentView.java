@@ -59,7 +59,7 @@ public class StudentView {
     }
 
     public void registerfail(String n){
-        System.out.println(n + "is not a valid course name");
+        System.out.println(n + " is not a valid course name");
     }
 
     public void displayCourseList(ArrayList<Course> c){
