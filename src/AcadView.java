@@ -60,7 +60,7 @@ public class AcadView {
     public String displayRemoveCourse(ArrayList<Course> c){
         System.out.println("Removing Course");
         this.displayCourseList(c);
-        sin.nextLine();
+        //sin.nextLine();
         System.out.print("\nEnter the code that you want to remove: ");
         String z = sin.nextLine();
         this.removedCourse(z);

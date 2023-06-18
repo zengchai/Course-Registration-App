@@ -21,6 +21,10 @@ public class Lecturer {
         return lec.staffId;
     }
 
+    public Staff getLect() {
+        return lec;
+    }
+
     public ArrayList<Course> getSelectedCourse() {
         return selectedCourse;
     }
