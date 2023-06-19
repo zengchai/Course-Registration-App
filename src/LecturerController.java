@@ -70,7 +70,6 @@ public class LecturerController {
         boolean repeat = false;
         boolean clash = false;
         int z = 0;
-        int r = 0;
         
             for(int i=0;i<courseList.size();i++)
             {  
@@ -78,6 +77,7 @@ public class LecturerController {
                 {
                     if (!courseList.get(i).getLec().getName().equals(""))
                     {
+<<<<<<< HEAD
                         //if (lecturerList.get(index).getSelectedCourse().size()==0)
                         //{ 
                             clash = true;
@@ -90,8 +90,19 @@ public class LecturerController {
                     else
                     {
                         r = 1;
+=======
+                        for(int s=0;s<lecturerList.get(index).getSelectedCourse().size();s++)
+                        { 
+                            if (temp.equals(lecturerList.get(index).getSelectedCourse().get(s).getCode()))
+                            {
+                                repeat = true;
+                                break;
+                            }
+>>>>>>> main
                     }
+                    clash = true;
                 }
+<<<<<<< HEAD
                 
             }
             if (r == 1)
@@ -106,8 +117,12 @@ public class LecturerController {
                         }
                     }  
             }
+=======
+>>>>>>> main
             
-                
+            }}
+            
+        
 
         
 
@@ -127,6 +142,12 @@ public class LecturerController {
             if(z==1){
                 lecturerView.registerfail(temp);
             }
+        }
+        else if(repeat == true){
+            lecturerView.displayRepeatTrue();
+        }
+        else if(clash == true){
+            lecturerView.displayClash();
         }
     }   
 

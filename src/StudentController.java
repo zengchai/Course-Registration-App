@@ -63,47 +63,55 @@ public class StudentController {
         }
         
     }
+public void RegisterCourse() {
+    boolean repeat = false;
+    studentview.displayCourseList(CourseList);
+    String temp = studentview.showRegisterCourse();
 
-    public void RegisterCourse(){
-        boolean repeat = false;
-
-        studentview.displayCourseList(CourseList);
-        String temp=studentview.showRegisterCourse();
-        for(int i=0;i<StudentList.get(index).getRegisterCourse().size();i++)
-        { if (temp.equals(StudentList.get(index).getRegisterCourse().get(i).getCode()))
-            {repeat = true;
+    for (int i = 0; i < StudentList.get(index).getRegisterCourse().size(); i++) {
+        if (temp.equals(StudentList.get(index).getRegisterCourse().get(i).getCode())) {
+            repeat = true;
             studentview.displayRepeatTrue();
-            }
-        }
-        if(repeat == false){
-            for (int i =0;i<CourseList.size();i++){
-                if(temp.equals(CourseList.get(i).getCode())){
-                    StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
-                    CourseList.get(i).getStuList().add(StudentList.get(index));
-                    studentview.registersuccess();
-                    CourseList.get(i).setSpace((CourseList.get(i).getSpace()-1));
-                }
-                else{
-                    studentview.registerfail(temp);
-                }
-            }
         }
     }
-   
 
-    public void removeCourse(){
-        String temp=studentview.showDeleteCourse();
-        for (int i =0;i<CourseList.size();i++){ 
-            if(temp.equals(CourseList.get(i).getCode())){
-                StudentList.get(index).getRegisterCourse().remove(i);
-                CourseList.get(i).setSpace((CourseList.get(i).getSpace()+1));
-                studentview.removesuccess();
+    if (!repeat) {
+        boolean courseFound = false;
+        for (int i = 0; i < CourseList.size(); i++) {
+            if (temp.equals(CourseList.get(i).getCode())) {
+                StudentList.get(index).getRegisterCourse().add(CourseList.get(i));
+                CourseList.get(i).getStuList().add(StudentList.get(index));
+                studentview.registersuccess();
+                CourseList.get(i).setSpace((CourseList.get(i).getSpace() - 1));
+                courseFound = true;
+                break;
             }
-            else{
-                studentview.removefail(temp);
-            }
-        }   
+        }
+
+        if (!courseFound) {
+            studentview.registerfail(temp);
+        }
     }
+}
+
+    public void removeCourse() {
+    String temp = studentview.showDeleteCourse();
+    boolean courseFound = false;
+
+    for (int i = 0; i < CourseList.size(); i++) {
+        if (temp.equals(StudentList.get(index).getRegisterCourse().get(i).getCode())) {
+            StudentList.get(index).getRegisterCourse().remove(i);
+            CourseList.get(i).setSpace(CourseList.get(i).getSpace() + 1);
+            studentview.removesuccess();
+            courseFound = true;
+            break;
+        }
+    }
+
+    if (!courseFound) {
+        studentview.removefail(temp);
+    }
+}
 
     public void viewStuCourse(){
         studentview.displayStuCourse(StudentList.get(index).getRegisterCourse());
