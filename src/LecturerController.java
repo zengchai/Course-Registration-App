@@ -8,6 +8,7 @@ public class LecturerController {
     private ArrayList<Course> courseList ;
     private LecturerView lecturerView;
     private int index;
+    Lecturer lec;
 
     public LecturerController(ArrayList<Lecturer> lecturerList, ArrayList<Course> courseList, Scanner z) {
         this.lecturerList = lecturerList;
@@ -18,7 +19,7 @@ public class LecturerController {
     public void LectControllerMenu(){
         clrscr();
         int choice = 0;
-        Lecturer lec = lecturerView.confirmLecturer();
+        lec = lecturerView.confirmLecturer();
 
          for (int a = 0 ; a<lecturerList.size(); a++){
             if(lec.getLect().getName().equals(lecturerList.get(a).getLect().getName())&&
@@ -77,20 +78,21 @@ public class LecturerController {
                 {
                     if (!courseList.get(i).getLec().getName().equals(""))
                     {
-                        if (lecturerList.get(index).getSelectedCourse().size()==0)
-                        { 
+                        //if (lecturerList.get(index).getSelectedCourse().size()==0)
+                        //{ 
                             clash = true;
                             lecturerView.displayClash();
                             r = 0;
                             break;
                             
-                        }
+                        //}
+                    }
+                    else
+                    {
+                        r = 1;
                     }
                 }
-                else
-                {
-                    r = 1;
-                }
+                
             }
             if (r == 1)
             {
